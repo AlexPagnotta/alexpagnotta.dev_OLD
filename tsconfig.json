@@ -1,4 +1,5 @@
 {
+  "types": ["types"],
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
