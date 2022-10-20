@@ -1,14 +1,17 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
 
-const Title = styled.h1({
+import { styled } from '../stitches.config';
+
+const Title = styled('h1', {
+  color: 'Blue',
   // Spread the base styles
-  ...tw`bg-red max-w-[200px]`,
+  ...tw`bg-yellow max-w-[200px] pt-20`,
   // Add conditional styling in the variants object
   // https://stitches.dev/docs/variants
   variants: {
-    hasBorder: { true: tw`border-purple-500` },
+    hasBorder: { true: tw`border-pink` },
   },
 });
 
