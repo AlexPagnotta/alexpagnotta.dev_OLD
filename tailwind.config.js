@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
+const defaultTheme = require('tailwindcss/defaultTheme');
 const addPlugin = require('tailwindcss/plugin');
 
 const BASE_FONT_SIZE_PX = 10;
@@ -52,7 +53,9 @@ module.exports = {
       ...createScale({ min: 272, max: 512, steps: 16, formatVal: pxUnitToRem }),
       ...createScale({ min: 544, max: 1024, steps: 32, formatVal: pxUnitToRem }),
     },
-    // Font Family
+    fontFamily: {
+      sans: ['Inter', ...defaultTheme.fontFamily.sans],
+    },
     // Font Size
     // Font Weight
     extend: {
