@@ -56,8 +56,85 @@ module.exports = {
     fontFamily: {
       sans: ['Inter', ...defaultTheme.fontFamily.sans],
     },
-    // Font Size
-    // Font Weight
+    fontSize: {
+      'title-1': [
+        pxUnitToRem(40),
+        {
+          lineHeight: '1.5',
+          letterSpacing: '-0.01em',
+          fontWeight: '700',
+        },
+      ],
+      'title-2': [
+        pxUnitToRem(32),
+        {
+          lineHeight: '1.5',
+          letterSpacing: '-0.01em',
+          fontWeight: '700',
+        },
+      ],
+      'title-3': [
+        pxUnitToRem(28),
+        {
+          lineHeight: '1.5',
+          letterSpacing: '-0.01em',
+          fontWeight: '700',
+        },
+      ],
+      'title-4': [
+        pxUnitToRem(24),
+        {
+          lineHeight: '1.5',
+          letterSpacing: '-0.01em',
+          fontWeight: '600',
+        },
+      ],
+      'body-5': [
+        pxUnitToRem(24),
+        {
+          lineHeight: '1.8',
+          letterSpacing: '0',
+          fontWeight: '400',
+        },
+      ],
+      'body-4': [
+        pxUnitToRem(20),
+        {
+          lineHeight: '1.8',
+          letterSpacing: '0',
+          fontWeight: '400',
+        },
+      ],
+      'body-3': [
+        pxUnitToRem(18),
+        {
+          lineHeight: '1.8',
+          letterSpacing: '0',
+          fontWeight: '400',
+        },
+      ],
+      'body-2': [
+        pxUnitToRem(16),
+        {
+          lineHeight: '1.8',
+          letterSpacing: '0',
+          fontWeight: '400',
+        },
+      ],
+      'body-1': [
+        '14px', // Font size is set in px to avoid shrink when on mobile, anything less than 14px would be too small
+        {
+          lineHeight: '1.8',
+          letterSpacing: '0',
+          fontWeight: '400',
+        },
+      ],
+    },
+    fontWeight: {
+      regular: 400,
+      semibold: 600,
+      bold: 700,
+    },
     extend: {
       backgroundImage: {
         'gradient-yellow': 'linear-gradient(90deg, #FFD84D 0%, #FF9446 100%);',
@@ -67,11 +144,16 @@ module.exports = {
       },
     },
   },
+
   plugins: [
-    addPlugin(function ({ addBase }) {
+    // TODO: Move to global style when stitches media query are configured
+    addPlugin(function ({ addBase, theme }) {
       addBase({
         ':root': {
-          fontSize: '62.5%',
+          fontSize: '54.6875%', // Decrease default size on mobile, useing rems it will automatically scale down all font sizes
+          [`@media (min-width: ${theme('screens.md')})`]: {
+            fontSize: '62.5%', // Set default size to 62.5% of 16px -> 10px, this way 1 rem -> 10px
+          },
         },
       });
     }),
