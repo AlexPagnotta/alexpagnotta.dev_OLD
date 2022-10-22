@@ -6,7 +6,7 @@ import { styled } from '../stitches.config';
 const Title = styled('h1', {
   color: 'Blue',
   // Spread the base styles
-  ...tw`bg-yellow max-w-[200px] pt-20 text-title-1 mb-100`,
+  ...tw`bg-yellow max-w-[200px] pt-20 text-title-1 mb-100 `,
   // Add conditional styling in the variants object
   // https://stitches.dev/docs/variants
   variants: {

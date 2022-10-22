@@ -2,7 +2,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const addPlugin = require('tailwindcss/plugin');
 
-const { createScale, pxUnitToRem, addPxSuffix } = require('./tailwind.config.utils');
+const { createScale, pxUnitToRem, addPxSuffix, unitToPx } = require('./tailwind.config.utils');
 
 module.exports = {
   theme: {
@@ -38,12 +38,12 @@ module.exports = {
       ...createScale({ min: 544, max: 1024, steps: 32, formatVal: pxUnitToRem }),
 
       // Recreate same scale but with px units
-      ...createScale({ max: 32, steps: 1, formatKey: addPxSuffix }),
-      ...createScale({ min: 32, max: 64, steps: 2, formatKey: addPxSuffix }),
-      ...createScale({ min: 68, max: 128, steps: 4, formatKey: addPxSuffix }),
-      ...createScale({ min: 136, max: 256, steps: 8, formatKey: addPxSuffix }),
-      ...createScale({ min: 272, max: 512, steps: 16, formatKey: addPxSuffix }),
-      ...createScale({ min: 544, max: 1024, steps: 32, formatKey: addPxSuffix }),
+      ...createScale({ max: 32, steps: 1, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 32, max: 64, steps: 2, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 68, max: 128, steps: 4, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 136, max: 256, steps: 8, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 272, max: 512, steps: 16, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 544, max: 1024, steps: 32, formatKey: addPxSuffix, formatVal: unitToPx }),
     },
     fontFamily: {
       sans: ['Inter', ...defaultTheme.fontFamily.sans],
@@ -126,6 +126,18 @@ module.exports = {
       regular: 400,
       semibold: 600,
       bold: 700,
+    },
+    borderRadius: {
+      none: '0',
+      sm: '6px',
+      md: '8px',
+    },
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
     },
     extend: {
       backgroundImage: {
