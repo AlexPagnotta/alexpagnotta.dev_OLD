@@ -2,12 +2,19 @@ import { globalStyles } from 'twin.macro';
 
 import { globalCss } from '../stitches.config';
 
+import colors from './colors';
+import themeDark from './themes/dark';
+import themeLight from './themes/dark';
+
 const customStyles = {
-  // Custom Styles
-  // body: {
-  //   WebkitTapHighlightColor: theme`colors.purple.500`,
-  //   ...tw`antialiased`,
-  // },
+  ...themeLight,
+  ...themeDark,
+  ':root': {
+    ...colors,
+  },
+  body: {
+    backgroundColor: 'var(--colors-body)',
+  },
 };
 
 const styles = () => {

@@ -1,7 +1,10 @@
 import Head from 'next/head';
+import React from 'react';
 import tw from 'twin.macro';
 
 import { styled } from '../stitches.config';
+
+import { useTheme } from '/contexts/Theme';
 
 const Title = styled('h1', {
   color: 'Blue',
@@ -15,6 +18,12 @@ const Title = styled('h1', {
 });
 
 export default function Home() {
+  const { theme, toggleMode } = useTheme();
+
+  React.useEffect(() => {
+    console.log(theme);
+  }, [theme]);
+
   return (
     <div>
       <Head>
@@ -27,6 +36,10 @@ export default function Home() {
         <Title hasBorder>
           Welcome to <a href='https://nextjs.org'>Next.js!</a>
         </Title>
+
+        <button onClick={() => toggleMode()} tw='bg-white p-32 text-body-2'>
+          CLICK
+        </button>
 
         <p tw='text-title-1 mb-40'>Test Test Text</p>
         <p tw='text-title-2 mb-40'>Test Test Text</p>

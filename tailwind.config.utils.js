@@ -38,6 +38,11 @@ const toFlatPropertyMap = (obj, keySeparator = '-') => {
   return flattenRecursive(obj);
 };
 
+const withOpacity =
+  (variable) =>
+  ({ opacityValue }) =>
+    opacityValue === undefined ? `hsl(${variable})` : `hsla(${variable}, ${opacityValue})`;
+
 module.exports = {
   baseFontSizePx: BASE_FONT_SIZE_PX,
   unitToPx,
@@ -48,4 +53,5 @@ module.exports = {
   addPxSuffix,
   createScale,
   toFlatPropertyMap,
+  withOpacity,
 };

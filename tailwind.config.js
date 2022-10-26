@@ -2,28 +2,28 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const addPlugin = require('tailwindcss/plugin');
 
-const { createScale, pxUnitToRem, addPxSuffix, unitToPx } = require('./tailwind.config.utils');
+const { createScale, pxUnitToRem, addPxSuffix, unitToPx, withOpacity } = require('./tailwind.config.utils');
 
 module.exports = {
   theme: {
     colors: {
       white: {
-        DEFAULT: '#FFFFFF',
+        DEFAULT: withOpacity('var(--colors-white)'),
       },
       black: {
-        DEFAULT: '#151515',
+        DEFAULT: withOpacity('var(--colors-black)'),
       },
       grey: {
-        lightest: '#FBFBFB',
-        light: '#F0F0F0',
-        dark: '#343434',
-        darkest: '#202020',
+        lightest: withOpacity('var(--colors-grey-lightest)'),
+        light: withOpacity('var(--colors-grey-light)'),
+        dark: withOpacity('var(--colors-grey-dark)'),
+        darkest: withOpacity('var(--colors-grey-darkest)'),
       },
       yellow: {
-        DEFAULT: '#FFD84D',
+        DEFAULT: withOpacity('var(--colors-yellow)'),
       },
       pink: {
-        DEFAULT: '#FF5E48',
+        DEFAULT: withOpacity('var(--colors-pink)'),
       },
       transparent: 'transparent',
       current: 'currentColor',
