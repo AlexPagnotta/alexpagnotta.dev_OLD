@@ -23,6 +23,18 @@ export default class Document extends NextDocument {
       <Html lang='en'>
         <Head />
         <body>
+          <script
+            key='theme-script'
+            dangerouslySetInnerHTML={{
+              __html: `(function() { try {
+        var localStorageTheme = localStorage.getItem('theme');
+        var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+        if (!localStorageTheme && prefersDarkMode) document.body.classList.add('theme-dark');
+        if (!localStorageTheme) return
+        document.body.classList.add('theme-' + localStorageTheme);
+      } catch (e) {} })();`,
+            }}
+          />
           <Main />
           <NextScript />
         </body>

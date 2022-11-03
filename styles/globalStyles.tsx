@@ -1,13 +1,25 @@
-import { globalStyles } from 'twin.macro';
+import tw, { globalStyles } from 'twin.macro';
 
 import { globalCss } from '../stitches.config';
 
+import colors from './colors';
+import themeDark from './themes/dark';
+import themeLight from './themes/dark';
+
 const customStyles = {
-  // Custom Styles
-  // body: {
-  //   WebkitTapHighlightColor: theme`colors.purple.500`,
-  //   ...tw`antialiased`,
-  // },
+  ':root': {
+    ...themeLight,
+    ...themeDark,
+    ...colors,
+
+    fontSize: '54.6875%', // Decrease default size on mobile, using rems it will automatically scale down all font sizes
+    '@md': {
+      fontSize: '62.5%', // Set default size to 62.5% of 16px -> 10px, this way 1 rem -> 10px
+    },
+  },
+  body: {
+    ...tw`bg-theme-body`,
+  },
 };
 
 const styles = () => {

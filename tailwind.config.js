@@ -1,32 +1,35 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const defaultTheme = require('tailwindcss/defaultTheme');
-const addPlugin = require('tailwindcss/plugin');
 
-const { createScale, pxUnitToRem, addPxSuffix, unitToPx } = require('./tailwind.config.utils');
+const { createScale, pxUnitToRem, addPxSuffix, unitToPx, withOpacity } = require('./tailwind.config.utils');
 
 module.exports = {
   theme: {
     colors: {
       white: {
-        DEFAULT: '#FFFFFF',
+        DEFAULT: withOpacity('var(--colors-white)'),
       },
       black: {
-        DEFAULT: '#151515',
+        DEFAULT: withOpacity('var(--colors-black)'),
       },
       grey: {
-        lightest: '#FBFBFB',
-        light: '#F0F0F0',
-        dark: '#343434',
-        darkest: '#202020',
+        lightest: withOpacity('var(--colors-grey-lightest)'),
+        light: withOpacity('var(--colors-grey-light)'),
+        dark: withOpacity('var(--colors-grey-dark)'),
+        darkest: withOpacity('var(--colors-grey-darkest)'),
       },
       yellow: {
-        DEFAULT: '#FFD84D',
+        DEFAULT: withOpacity('var(--colors-yellow)'),
       },
       pink: {
-        DEFAULT: '#FF5E48',
+        DEFAULT: withOpacity('var(--colors-pink)'),
       },
       transparent: 'transparent',
       current: 'currentColor',
+
+      theme: {
+        body: 'var(--colors-body)',
+      },
     },
     spacing: {
       // Create spacing scale with rem units
@@ -141,25 +144,11 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'gradient-yellow': 'linear-gradient(90deg, #FFD84D 0%, #FF9446 100%);',
-        'gradient-pink': 'linear-gradient(90deg, #FF5942 0%, #FFB0A6 100%);',
-        'gradient-grey': 'linear-gradient(90deg, #FFFFFF 0%, #C7C7C7 100%);',
-        'gradient-grey-dark': 'linear-gradient(90deg, #686868 1.59%, #202020 100%);',
+        'gradient-yellow': 'var(--gradient-yellow)',
+        'gradient-pink': 'var(--gradient-pink)',
+        'gradient-grey': 'var(--gradient-grey)',
+        'gradient-grey-dark': 'var(--gradient-grey-dark)',
       },
     },
   },
-
-  plugins: [
-    // TODO: Move to global style when stitches media query are configured
-    addPlugin(function ({ addBase, theme }) {
-      addBase({
-        ':root': {
-          fontSize: '54.6875%', // Decrease default size on mobile, useing rems it will automatically scale down all font sizes
-          [`@media (min-width: ${theme('screens.md')})`]: {
-            fontSize: '62.5%', // Set default size to 62.5% of 16px -> 10px, this way 1 rem -> 10px
-          },
-        },
-      });
-    }),
-  ],
 };
