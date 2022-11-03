@@ -14,7 +14,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel='preload' href='/fonts/Inter-Variable.ttf' as='font' type='font/ttf' crossOrigin='anonymous' />
       </NextHead>
       <ThemeProvider>
-        <Component {...pageProps} />;{' '}
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );

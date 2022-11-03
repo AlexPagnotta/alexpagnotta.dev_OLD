@@ -19,25 +19,6 @@ const createScale = ({ min = 0, max = 100, steps = 1, formatVal = noop, formatKe
   }, {});
 };
 
-const toFlatPropertyMap = (obj, keySeparator = '-') => {
-  const flattenRecursive = (obj, parentProperty = undefined, propertyMap = {}) => {
-    for (const [key, value] of Object.entries(obj)) {
-      const property = parentProperty
-        ? key.toLowerCase() === 'default'
-          ? parentProperty
-          : `${parentProperty}${keySeparator}${key}`
-        : key;
-      if (value && typeof value === 'object' && !Array.isArray(value)) {
-        flattenRecursive(value, property, propertyMap);
-      } else {
-        propertyMap[property] = value;
-      }
-    }
-    return propertyMap;
-  };
-  return flattenRecursive(obj);
-};
-
 const withOpacity =
   (variable) =>
   ({ opacityValue }) =>
@@ -52,6 +33,5 @@ module.exports = {
   pxUnitToRem,
   addPxSuffix,
   createScale,
-  toFlatPropertyMap,
   withOpacity,
 };
