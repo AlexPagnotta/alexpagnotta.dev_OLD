@@ -28,7 +28,10 @@ module.exports = {
       current: 'currentColor',
 
       theme: {
-        body: 'var(--colors-body)',
+        colors: {
+          body: 'var(--colors-body)',
+          'focus-ring': 'var(--colors-focus-ring)',
+        },
       },
     },
     spacing: {

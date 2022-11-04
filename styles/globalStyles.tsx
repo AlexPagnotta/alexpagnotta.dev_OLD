@@ -4,7 +4,7 @@ import { globalCss } from '../stitches.config';
 
 import colors from './colors';
 import themeDark from './themes/dark';
-import themeLight from './themes/dark';
+import themeLight from './themes/light';
 
 const customStyles = {
   ':root': {
@@ -17,6 +17,8 @@ const customStyles = {
       fontSize: '62.5%', // Set default size to 62.5% of 16px -> 10px, this way 1 rem -> 10px
     },
   },
+
+  // Reset
   '*': {
     ...tw`m-0`,
   },
@@ -24,7 +26,18 @@ const customStyles = {
     ...tw`h-full`,
   },
   body: {
-    ...tw`bg-theme-body antialiased font-sans text-body-3`,
+    ...tw`bg-theme-colors-body antialiased font-sans text-body-3`,
+  },
+
+  // Focus outline
+
+  // Disable focus outline when focus comes from mouse/touch interactions
+  ':focus:not(:focus-visible)': {
+    ...tw`outline-none`,
+  },
+  // Custom style for keyboard interaction focus
+  ':focus-visible': {
+    ...tw`outline-none ring-offset-2 ring-4 ring-theme-colors-focus-ring`, // TODO: Temp style
   },
 };
 
