@@ -17,8 +17,14 @@ const customStyles = {
       fontSize: '62.5%', // Set default size to 62.5% of 16px -> 10px, this way 1 rem -> 10px
     },
   },
+  '*': {
+    ...tw`m-0`,
+  },
+  'html, body, #__next': {
+    ...tw`h-full`,
+  },
   body: {
-    ...tw`bg-theme-body`,
+    ...tw`bg-theme-body antialiased font-sans text-body-3`,
   },
 };
 
