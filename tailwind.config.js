@@ -30,6 +30,7 @@ module.exports = {
       theme: {
         colors: {
           body: 'var(--colors-body)',
+          text: 'var(--colors-text)',
           'focus-ring': 'var(--colors-focus-ring)',
         },
       },
@@ -60,7 +61,6 @@ module.exports = {
         {
           lineHeight: '1.5',
           letterSpacing: '-0.01em',
-          fontWeight: '700',
         },
       ],
       'title-2': [
@@ -68,7 +68,6 @@ module.exports = {
         {
           lineHeight: '1.5',
           letterSpacing: '-0.01em',
-          fontWeight: '700',
         },
       ],
       'title-3': [
@@ -76,7 +75,6 @@ module.exports = {
         {
           lineHeight: '1.5',
           letterSpacing: '-0.01em',
-          fontWeight: '700',
         },
       ],
       'title-4': [
@@ -84,7 +82,6 @@ module.exports = {
         {
           lineHeight: '1.5',
           letterSpacing: '-0.01em',
-          fontWeight: '600',
         },
       ],
       'body-5': [
@@ -100,7 +97,6 @@ module.exports = {
         {
           lineHeight: '1.8',
           letterSpacing: '0',
-          fontWeight: '400',
         },
       ],
       'body-3': [
@@ -108,7 +104,6 @@ module.exports = {
         {
           lineHeight: '1.8',
           letterSpacing: '0',
-          fontWeight: '400',
         },
       ],
       'body-2': [
@@ -116,7 +111,6 @@ module.exports = {
         {
           lineHeight: '1.8',
           letterSpacing: '0',
-          fontWeight: '400',
         },
       ],
       'body-1': [
@@ -124,7 +118,6 @@ module.exports = {
         {
           lineHeight: '1.8',
           letterSpacing: '0',
-          fontWeight: '400',
         },
       ],
     },
