@@ -138,6 +138,11 @@ module.exports = {
       xl: '1280px',
       '2xl': '1536px',
     },
+    maxWidth: {
+      none: 'none',
+      md: '768px',
+      lg: '960px',
+    },
     extend: {
       backgroundImage: {
         'gradient-yellow': 'var(--gradient-yellow)',
