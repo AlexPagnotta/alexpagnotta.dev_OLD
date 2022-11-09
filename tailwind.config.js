@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const defaultTheme = require('tailwindcss/defaultTheme');
 
-const { createScale, pxUnitToRem, addPxSuffix, unitToPx, withOpacity } = require('./tailwind.config.utils');
+const { createScale, pxUnitToRem, addPxSuffix, unitToPx, flatten, withOpacity } = require('./tailwind.config.utils');
 
 module.exports = {
   theme: {
@@ -32,6 +32,7 @@ module.exports = {
           body: 'var(--colors-body)',
           text: 'var(--colors-text)',
           'focus-ring': 'var(--colors-focus-ring)',
+          link: 'var(--colors-link)',
         },
       },
     },
@@ -130,6 +131,7 @@ module.exports = {
       none: '0',
       sm: '6px',
       md: '8px',
+      full: '100%',
     },
     screens: {
       sm: '640px',
@@ -137,6 +139,7 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
       '2xl': '1536px',
+      'support-hover': { raw: '(hover: hover) and (pointer: fine)' },
     },
     maxWidth: {
       none: 'none',
@@ -145,10 +148,17 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'gradient-yellow': 'var(--gradient-yellow)',
-        'gradient-pink': 'var(--gradient-pink)',
-        'gradient-grey': 'var(--gradient-grey)',
-        'gradient-grey-dark': 'var(--gradient-grey-dark)',
+        ...flatten({
+          'gradient-yellow': 'var(--gradient-yellow)',
+          'gradient-pink': 'var(--gradient-pink)',
+          'gradient-grey': 'var(--gradient-grey)',
+          'gradient-grey-dark': 'var(--gradient-grey-dark)',
+
+          theme: {
+            'link-header-hover': 'var(--colors-link-header-hover)',
+            logo: 'var(--colors-link-header-hover)',
+          },
+        }),
       },
     },
   },
