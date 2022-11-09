@@ -35,9 +35,10 @@ const customStyles = {
   ':focus:not(:focus-visible)': {
     ...tw`outline-none`,
   },
+
   // Custom style for keyboard interaction focus
   ':focus-visible': {
-    ...tw`outline-none ring-offset-2 ring-4 ring-theme-colors-focus-ring`, // TODO: Temp style
+    ...tw`outline-none ring-4 ring-theme-colors-focus-ring`, // TODO: Temp style
   },
 };
 
