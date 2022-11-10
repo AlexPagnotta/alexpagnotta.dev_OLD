@@ -26,7 +26,7 @@ const customStyles = {
     ...tw`h-full`,
   },
   body: {
-    ...tw`bg-theme-colors-body antialiased font-sans text-body-3`,
+    ...tw`bg-theme-colors-body antialiased font-sans text-body-3 text-theme-colors-text-primary`,
   },
 
   // Focus outline

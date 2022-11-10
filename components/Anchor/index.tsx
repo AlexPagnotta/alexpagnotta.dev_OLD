@@ -1,5 +1,7 @@
 import { VariantProps } from '@stitches/react';
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
+
+import { styled } from '/stitches.config';
 
 type Props = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   variant?: VariantProps<typeof StyledAnchor>['variant'];

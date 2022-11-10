@@ -30,7 +30,9 @@ module.exports = {
       theme: {
         colors: {
           body: 'var(--colors-body)',
-          text: 'var(--colors-text)',
+          text: {
+            primary: 'var(--colors-text-primary)',
+          },
           'focus-ring': 'var(--colors-focus-ring)',
           link: 'var(--colors-link)',
         },
