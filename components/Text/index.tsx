@@ -23,18 +23,24 @@ const Text = styled('span', {
       bold: tw`font-bold`,
     },
     variant: {
-      default: tw`text-theme-colors-text`,
+      default: tw`text-current`,
+      primary: tw`text-theme-colors-text-primary`,
     },
   },
   defaultVariants: {
-    size: 'body-3',
     variant: 'default',
   },
 });
 
 export default Text;
 
-type HeadingProps = Omit<VariantProps<typeof Text>, 'size' | 'weight'> & React.HTMLAttributes<HTMLHeadingElement>;
+type TextVariants = VariantProps<typeof Text>;
+
+type StrongProps = Omit<TextVariants, 'size' | 'weight'> & React.HTMLAttributes<HTMLParagraphElement>;
+
+export const Strong = (props: StrongProps) => <Text {...props} as='strong' weight='bold' />;
+
+type HeadingProps = Omit<TextVariants, 'size' | 'weight'> & React.HTMLAttributes<HTMLHeadingElement>;
 
 export const H1 = (props: HeadingProps) => <Text {...props} size='title-1' as='h1' />;
 
