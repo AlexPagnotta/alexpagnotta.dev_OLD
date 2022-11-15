@@ -23,10 +23,25 @@ type Props = ButtonProps &
 
 const StyledButton = styled('button', {
   ...tw`appearance-none select-none cursor-pointer disabled:cursor-not-allowed `,
-  ...tw`inline-flex justify-center items-center h-44 active:scale-95`,
+  ...tw`inline-flex justify-center items-center h-44 overflow-hidden isolate active:scale-95`,
   WebkitTapHighlightColor: 'transparent',
   transition: 'transform 0.3s',
   willChange: 'transform', // Fix text bluriness on transform
+
+  '&:before': {
+    ...tw`content-[""] absolute inset-0 z-[-1] opacity-0`,
+    transition: 'opacity 0.5s',
+  },
+
+  '@support-hover': {
+    '&:hover': {
+      '&:not(:disabled)': {
+        '&:before': {
+          ...tw`opacity-100`,
+        },
+      },
+    },
+  },
 
   variants: {
     variant: {
@@ -34,24 +49,16 @@ const StyledButton = styled('button', {
         ...tw`bg-theme-colors-button-primary-bg text-theme-colors-button-primary-content`,
         ...tw`focus-visible:(ring-0 bg-theme-button-primary-bg-hover) disabled:opacity-60`,
 
-        '@support-hover': {
-          '&:hover': {
-            '&:not(:disabled)': {
-              ...tw`bg-theme-button-primary-bg-hover`,
-            },
-          },
+        '&:before': {
+          ...tw`bg-theme-button-primary-bg-hover `,
         },
       },
       secondary: {
         ...tw`bg-theme-colors-button-secondary-bg text-theme-colors-button-secondary-content border-theme-colors-button-secondary-content border-2`,
         ...tw`focus-visible:(ring-0 bg-theme-button-secondary-bg-hover) disabled:opacity-60`,
 
-        '@support-hover': {
-          '&:hover': {
-            '&:not(:disabled)': {
-              ...tw`bg-theme-button-secondary-bg-hover `,
-            },
-          },
+        '&:before': {
+          ...tw`bg-theme-button-secondary-bg-hover `,
         },
       },
     },
