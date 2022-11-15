@@ -10,7 +10,7 @@ import TwitterIcon from './IconList/twitter.svg';
 
 import { styled } from '/stitches.config';
 
-type Props = SVGAttributes<SVGElement> & {
+export type Props = SVGAttributes<SVGElement> & {
   name: keyof typeof iconsDict;
   variant?: VariantProps<typeof StyledIcon>['variant'];
 };

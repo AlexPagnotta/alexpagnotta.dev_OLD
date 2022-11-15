@@ -8,7 +8,9 @@ export default function Home() {
     <Layout>
       <Container tw='flex flex-col gap-56-px md:gap-128-px py-56-px md:py-128-px'>
         <Hero />
-        <Button>Ttest</Button>
+        <Button iconStart='moon' variant='primary'>
+          Test
+        </Button>
       </Container>
     </Layout>
   );

@@ -172,10 +172,10 @@ module.exports = {
 
             button: {
               primary: {
-                'bg-hover': '--colors-button-primary-bg-hover',
+                'bg-hover': 'var(--colors-button-primary-bg-hover)',
               },
               secondary: {
-                'bg-hover': '--colors-button-secondary-bg-hover',
+                'bg-hover': 'var(--colors-button-secondary-bg-hover)',
               },
             },
           },
