@@ -35,6 +35,16 @@ module.exports = {
           },
           'focus-ring': 'var(--colors-focus-ring)',
           link: 'var(--colors-link)',
+          button: {
+            primary: {
+              content: 'var(--colors-button-primary-content)',
+              bg: 'var(--colors-button-primary-bg)',
+            },
+            secondary: {
+              content: 'var(--colors-button-secondary-content)',
+              bg: 'var(--colors-button-secondary-bg)',
+            },
+          },
         },
       },
     },
@@ -159,6 +169,15 @@ module.exports = {
           theme: {
             'link-header-hover': 'var(--colors-link-header-hover)',
             logo: 'var(--colors-link-header-hover)',
+
+            button: {
+              primary: {
+                'bg-hover': 'var(--colors-button-primary-bg-hover)',
+              },
+              secondary: {
+                'bg-hover': 'var(--colors-button-secondary-bg-hover)',
+              },
+            },
           },
         }),
       },
