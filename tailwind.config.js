@@ -48,6 +48,10 @@ module.exports = {
               bg: 'var(--colors-button-secondary-bg)',
             },
           },
+          chip: {
+            content: 'var(--colors-chip-content)',
+            bg: 'var(--colors-chip-bg)',
+          },
         },
       },
     },

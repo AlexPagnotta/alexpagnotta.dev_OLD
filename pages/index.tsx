@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import Chip from '/components/Chip';
 import Container from '/components/Container';
 import Hero from '/components/Hero';
 import Text, { H2, H3 } from '/components/Text';
@@ -22,26 +23,24 @@ export default function Home() {
               <article tw='max-w-sm'>
                 <Link href='/test'>
                   <a>
-                    <div>
-                      <H3 tw='mb-8'>Content Title</H3>
-                      <Text as='p' size='body-3'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                      </Text>
-                    </div>
+                    <Chip tw='mb-12'>Post</Chip>
+                    <H3 tw='mb-8'>Content Title</H3>
+                    <Text as='p' size='body-3'>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua.
+                    </Text>
                   </a>
                 </Link>
               </article>
               <article tw='max-w-sm'>
                 <Link href='/test'>
                   <a>
-                    <div>
-                      <H3 tw='mb-8'>Content Title</H3>
-                      <Text as='p' size='body-3'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                      </Text>
-                    </div>
+                    <Chip tw='mb-12'>Post</Chip>
+                    <H3 tw='mb-8'>Content Title</H3>
+                    <Text as='p' size='body-3'>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua.
+                    </Text>
                   </a>
                 </Link>
               </article>

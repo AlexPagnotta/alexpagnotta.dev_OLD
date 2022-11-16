@@ -17,6 +17,9 @@ const themeLight = {
     '--colors-button-secondary-content': 'hsl(var(--colors-black))',
     '--colors-button-secondary-bg': 'hsl(var(--colors-white))',
     '--colors-button-secondary-bg-hover': 'var(--gradient-grey)',
+
+    '--colors-chip-content': 'hsl(var(--colors-black))',
+    '--colors-chip-bg': 'hsl(var(--colors-grey-light))',
   },
 };
 
