@@ -15,9 +15,34 @@ const Footer = () => {
         tempor incididunt.
       </Text>
       <div tw='flex gap-48-px mt-42'>
-        <Button icon='github' aria-label='Go to Github' title='Go to Github' />
-        <Button icon='linkedin' aria-label='Go to Linkedin' title='Go to Linkedin' />
-        <Button icon='twitter' aria-label='Go to Twitter' title='Go to Twitter' />
+        <Button
+          icon='github'
+          aria-label='Go to Github'
+          title='Go to Github'
+          as='a'
+          href='https://wwww.placeholder.com'
+          target='_blank'
+          rel='noopener noreferrer'
+        />
+        <Button
+          icon='linkedin'
+          aria-label='Go to Linkedin'
+          title='Go to Linkedin'
+          as='a'
+          href='https://wwww.placeholder.com'
+          target='_blank'
+          rel='noopener noreferrer'
+        />
+        <Button
+          icon='twitter'
+          aria-label='Go to Twitter'
+          title='Go to Twitter'
+          as='a'
+          href='https://wwww.placeholder.com'
+          type='submit'
+          target='_blank'
+          rel='noopener noreferrer'
+        />
       </div>
     </Container>
   );

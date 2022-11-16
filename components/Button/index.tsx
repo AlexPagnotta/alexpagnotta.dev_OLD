@@ -6,20 +6,22 @@ import Icon, { Props as IconProps } from '../Icon';
 
 import { styled } from '/stitches.config';
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: VariantProps<typeof StyledButton>['variant'];
-};
+type PolymorphicElement = 'a' | 'button';
 
-type Props = ButtonProps &
-  (
-    | {
-        icon?: IconProps['name'];
-        iconStart?: never;
-        iconEnd?: never;
-        children?: never;
-      }
-    | { icon?: never; iconStart?: IconProps['name']; iconEnd?: IconProps['name']; children: React.ReactNode }
-  );
+type Props<T extends PolymorphicElement> = {
+  as?: T;
+  variant?: VariantProps<typeof StyledButton>['variant'];
+  children?: React.ReactNode;
+} & (
+  | {
+      icon?: IconProps['name'];
+      iconStart?: never;
+      iconEnd?: never;
+      children?: never;
+    }
+  | { icon?: never; iconStart?: IconProps['name']; iconEnd?: IconProps['name']; children: React.ReactNode }
+) &
+  React.ComponentPropsWithoutRef<T>;
 
 const StyledButton = styled('button', {
   ...tw`appearance-none select-none cursor-pointer disabled:cursor-not-allowed `,
@@ -79,7 +81,7 @@ const StyledButton = styled('button', {
 
 const StyledIcon = styled(Icon, { ...tw`h-24 flex-shrink-0 pointer-events-none` });
 
-const Button = ({ icon, iconStart, iconEnd, children, ...rest }: Props) => {
+const Button = <T extends PolymorphicElement = 'button'>({ icon, iconStart, iconEnd, children, ...rest }: Props<T>) => {
   return (
     <StyledButton buttonType={icon ? 'icon' : 'default'} {...rest}>
       {icon ? (
