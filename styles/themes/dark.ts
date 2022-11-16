@@ -2,6 +2,7 @@ const themeDark = {
   '.theme-dark': {
     '--colors-body': 'hsl(var(--colors-black))',
     '--colors-text-primary': 'hsl(var(--colors-white))',
+    '--colors-section-bg': 'hsl(var(--colors-grey-darkest))',
 
     '--colors-focus-ring': 'hsl(var(--colors-white))',
 

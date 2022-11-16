@@ -33,6 +33,9 @@ module.exports = {
           text: {
             primary: 'var(--colors-text-primary)',
           },
+          section: {
+            bg: 'var(--colors-section-bg)',
+          },
           'focus-ring': 'var(--colors-focus-ring)',
           link: 'var(--colors-link)',
           button: {
@@ -155,6 +158,7 @@ module.exports = {
     },
     maxWidth: {
       none: 'none',
+      sm: '640px',
       md: '768px',
       lg: '960px',
     },
