@@ -77,7 +77,7 @@ const StyledButton = styled('button', {
   },
 });
 
-const StyledIcon = styled(Icon, { ...tw`h-24 flex-shrink-0` });
+const StyledIcon = styled(Icon, { ...tw`h-24 flex-shrink-0 pointer-events-none` });
 
 const Button = ({ icon, iconStart, iconEnd, children, ...rest }: Props) => {
   return (

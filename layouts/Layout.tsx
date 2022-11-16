@@ -1,3 +1,4 @@
+import Footer from '/components/Footer';
 import Header from '/components/Header';
 import { styled } from '/stitches.config';
 
@@ -12,7 +13,7 @@ export const Layout = ({ children }: Props) => {
     <>
       <Header />
       <Main>{children}</Main>
-      {/* Footer */}
+      <Footer />
     </>
   );
 };
