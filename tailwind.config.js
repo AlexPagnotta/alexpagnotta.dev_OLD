@@ -33,6 +33,10 @@ module.exports = {
           text: {
             primary: 'var(--colors-text-primary)',
           },
+          section: {
+            bg: 'var(--colors-section-bg)',
+            'bg-hover': 'var(--colors-section-bg-hover)',
+          },
           'focus-ring': 'var(--colors-focus-ring)',
           link: 'var(--colors-link)',
           button: {
@@ -44,6 +48,10 @@ module.exports = {
               content: 'var(--colors-button-secondary-content)',
               bg: 'var(--colors-button-secondary-bg)',
             },
+          },
+          chip: {
+            content: 'var(--colors-chip-content)',
+            bg: 'var(--colors-chip-bg)',
           },
         },
       },
@@ -143,6 +151,7 @@ module.exports = {
       none: '0',
       sm: '6px',
       md: '8px',
+      lg: '14px',
       full: '100%',
     },
     screens: {
@@ -155,6 +164,7 @@ module.exports = {
     },
     maxWidth: {
       none: 'none',
+      sm: '640px',
       md: '768px',
       lg: '960px',
     },

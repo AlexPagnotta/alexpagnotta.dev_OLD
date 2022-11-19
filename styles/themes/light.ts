@@ -2,6 +2,8 @@ const themeLight = {
   '.theme-light': {
     '--colors-body': 'hsl(var(--colors-white))',
     '--colors-text-primary': 'hsl(var(--colors-black))',
+    '--colors-section-bg': 'hsl(var(--colors-grey-lightest))',
+    '--colors-section-bg-hover': 'hsl(var(--colors-grey-light))',
 
     '--colors-focus-ring': 'hsl(var(--colors-pink))',
 
@@ -16,6 +18,9 @@ const themeLight = {
     '--colors-button-secondary-content': 'hsl(var(--colors-black))',
     '--colors-button-secondary-bg': 'hsl(var(--colors-white))',
     '--colors-button-secondary-bg-hover': 'var(--gradient-grey)',
+
+    '--colors-chip-content': 'hsl(var(--colors-black))',
+    '--colors-chip-bg': 'hsl(var(--colors-grey-light))',
   },
 };
 
