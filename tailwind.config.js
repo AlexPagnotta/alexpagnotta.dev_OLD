@@ -35,6 +35,7 @@ module.exports = {
           },
           section: {
             bg: 'var(--colors-section-bg)',
+            'bg-hover': 'var(--colors-section-bg-hover)',
           },
           'focus-ring': 'var(--colors-focus-ring)',
           link: 'var(--colors-link)',
@@ -150,6 +151,7 @@ module.exports = {
       none: '0',
       sm: '6px',
       md: '8px',
+      lg: '14px',
       full: '100%',
     },
     screens: {

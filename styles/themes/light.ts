@@ -3,6 +3,7 @@ const themeLight = {
     '--colors-body': 'hsl(var(--colors-white))',
     '--colors-text-primary': 'hsl(var(--colors-black))',
     '--colors-section-bg': 'hsl(var(--colors-grey-lightest))',
+    '--colors-section-bg-hover': 'hsl(var(--colors-grey-light))',
 
     '--colors-focus-ring': 'hsl(var(--colors-pink))',
 

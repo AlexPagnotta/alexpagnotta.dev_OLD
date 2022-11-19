@@ -5,7 +5,7 @@ import Text, { H2 } from '../Text';
 
 const Footer = () => {
   return (
-    <Container as='footer' tw='py-56-px md:py-128-px'>
+    <Container as='footer' tw='py-80-px md:py-128-px'>
       <H2>Stay in touch 👈</H2>
       <Text size='body-3' tw='block mt-24'>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do you can an email at{' '}
