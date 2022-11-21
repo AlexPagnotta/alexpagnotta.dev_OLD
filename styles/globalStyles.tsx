@@ -42,6 +42,11 @@ const customStyles = {
   ':focus-visible': {
     ...tw`outline-none ring-4 ring-theme-colors-focus-ring`, // TODO: Temp style
   },
+
+  // Custom selection colors
+  '::selection': {
+    ...tw`bg-theme-colors-selection-bg text-theme-colors-selection-content`,
+  },
 };
 
 const styles = () => {

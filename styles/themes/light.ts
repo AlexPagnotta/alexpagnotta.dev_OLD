@@ -5,6 +5,9 @@ const themeLight = {
     '--colors-section-bg': 'hsl(var(--colors-grey-lightest))',
     '--colors-section-bg-hover': 'hsl(var(--colors-grey-light))',
 
+    '--colors-selection-bg': 'hsl(var(--colors-pink))',
+    '--colors-selection-content': 'hsl(var(--colors-white))',
+
     '--colors-focus-ring': 'hsl(var(--colors-pink))',
 
     '--colors-link': 'hsl(var(--colors-pink))',
