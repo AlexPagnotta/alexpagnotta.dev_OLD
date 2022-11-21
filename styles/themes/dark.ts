@@ -5,6 +5,9 @@ const themeDark = {
     '--colors-section-bg': 'hsl(var(--colors-grey-darkest))',
     '--colors-section-bg-hover': 'hsl(var(--colors-grey-dark))',
 
+    '--colors-selection-bg': 'hsl(var(--colors-yellow))',
+    '--colors-selection-content': 'hsl(var(--colors-black))',
+
     '--colors-focus-ring': 'hsl(var(--colors-white))',
 
     '--colors-link': 'hsl(var(--colors-yellow))',

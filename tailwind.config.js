@@ -37,6 +37,10 @@ module.exports = {
             bg: 'var(--colors-section-bg)',
             'bg-hover': 'var(--colors-section-bg-hover)',
           },
+          selection: {
+            bg: 'var(--colors-selection-bg)',
+            content: 'var(--colors-selection-content)',
+          },
           'focus-ring': 'var(--colors-focus-ring)',
           link: 'var(--colors-link)',
           button: {
