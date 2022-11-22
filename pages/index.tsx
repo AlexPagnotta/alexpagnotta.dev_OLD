@@ -5,7 +5,7 @@ import Chip from '/components/Chip';
 import Container from '/components/Container';
 import Hero from '/components/Hero';
 import Text, { H2, H3 } from '/components/Text';
-import { Layout } from '/layouts/Layout';
+import Layout from '/layouts/Layout';
 import { styled } from '/stitches.config';
 
 const StyledContentItemWrapper = styled('div', {
@@ -44,12 +44,12 @@ export default function Home() {
 
         <section>
           <Container>
-            <H2 tw='mb-24'>My Stuff</H2>
+            <H2 tw='mb-24-px'>My Stuff</H2>
           </Container>
           <div tw='bg-theme-colors-section-bg py-64-px'>
             <Container tw='flex flex-col gap-48-px'>
               <article>
-                <Link href='/test' passHref>
+                <Link href='/content' passHref>
                   <StyledContentItemAnchor>
                     <StyledContentItemWrapper>
                       <div tw='max-w-sm'>
@@ -65,7 +65,7 @@ export default function Home() {
                 </Link>
               </article>
               <article>
-                <Link href='/test' passHref>
+                <Link href='/content' passHref>
                   <StyledContentItemAnchor>
                     <StyledContentItemWrapper>
                       <div tw='max-w-sm'>
