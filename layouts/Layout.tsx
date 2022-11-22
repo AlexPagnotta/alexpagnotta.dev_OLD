@@ -3,12 +3,12 @@ import Header from '/components/Header';
 import { styled } from '/stitches.config';
 
 type Props = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const Main = styled('main', {});
 
-export const Layout = ({ children }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <>
       <Header />
@@ -17,3 +17,5 @@ export const Layout = ({ children }: Props) => {
     </>
   );
 };
+
+export default Layout;
