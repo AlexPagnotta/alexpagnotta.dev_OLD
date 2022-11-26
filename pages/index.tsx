@@ -34,56 +34,56 @@ const StyledContentItemAnchor = styled('a', {
   },
 });
 
-export default function Home() {
-  return (
-    <Layout>
-      <div tw='flex flex-col gap-80-px md:gap-128-px pt-56-px md:pt-128-px'>
-        <Container>
-          <Hero />
-        </Container>
+const Home = () => (
+  <Layout>
+    <div tw='flex flex-col gap-80-px md:gap-128-px pt-56-px md:pt-128-px'>
+      <Container>
+        <Hero />
+      </Container>
 
-        <section>
-          <Container>
-            <H2 tw='mb-24-px'>My Stuff</H2>
+      <section>
+        <Container>
+          <H2 tw='mb-24-px'>My Stuff</H2>
+        </Container>
+        <div tw='bg-theme-colors-section-bg py-64-px'>
+          <Container tw='flex flex-col gap-48-px'>
+            <article>
+              <Link href='/content' passHref>
+                <StyledContentItemAnchor>
+                  <StyledContentItemWrapper>
+                    <div tw='max-w-sm'>
+                      <Chip tw='mb-12'>Post</Chip>
+                      <H3 tw='mb-8'>Content Title</H3>
+                      <Text as='p' size='body-3'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.
+                      </Text>
+                    </div>
+                  </StyledContentItemWrapper>
+                </StyledContentItemAnchor>
+              </Link>
+            </article>
+            <article>
+              <Link href='/content' passHref>
+                <StyledContentItemAnchor>
+                  <StyledContentItemWrapper>
+                    <div tw='max-w-sm'>
+                      <Chip tw='mb-12'>Post</Chip>
+                      <H3 tw='mb-8'>Content Title</H3>
+                      <Text as='p' size='body-3'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.
+                      </Text>
+                    </div>
+                  </StyledContentItemWrapper>
+                </StyledContentItemAnchor>
+              </Link>
+            </article>
           </Container>
-          <div tw='bg-theme-colors-section-bg py-64-px'>
-            <Container tw='flex flex-col gap-48-px'>
-              <article>
-                <Link href='/content' passHref>
-                  <StyledContentItemAnchor>
-                    <StyledContentItemWrapper>
-                      <div tw='max-w-sm'>
-                        <Chip tw='mb-12'>Post</Chip>
-                        <H3 tw='mb-8'>Content Title</H3>
-                        <Text as='p' size='body-3'>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua.
-                        </Text>
-                      </div>
-                    </StyledContentItemWrapper>
-                  </StyledContentItemAnchor>
-                </Link>
-              </article>
-              <article>
-                <Link href='/content' passHref>
-                  <StyledContentItemAnchor>
-                    <StyledContentItemWrapper>
-                      <div tw='max-w-sm'>
-                        <Chip tw='mb-12'>Post</Chip>
-                        <H3 tw='mb-8'>Content Title</H3>
-                        <Text as='p' size='body-3'>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua.
-                        </Text>
-                      </div>
-                    </StyledContentItemWrapper>
-                  </StyledContentItemAnchor>
-                </Link>
-              </article>
-            </Container>
-          </div>
-        </section>
-      </div>
-    </Layout>
-  );
-}
+        </div>
+      </section>
+    </div>
+  </Layout>
+);
+
+export default Home;
