@@ -10,9 +10,11 @@ type BaseFrontmatter = {
   date: string;
   tags: string[];
   slug: string;
+  extendedSlug: string;
 };
 
 export type PostFrontmatter = BaseFrontmatter & {
+  type: ContentType.POST;
   readingTime?: string;
 };
 
@@ -22,6 +24,7 @@ export type Post = {
 };
 
 export type ProjectFrontmatter = BaseFrontmatter & {
+  type: ContentType.PROJECT;
   subtitle?: string;
 };
 
@@ -31,6 +34,7 @@ export type Project = {
 };
 
 export type SnippetFrontmatter = BaseFrontmatter & {
+  type: ContentType.SNIPPET;
   subtitle?: string;
 };
 

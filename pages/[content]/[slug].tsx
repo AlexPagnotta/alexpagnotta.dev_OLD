@@ -8,12 +8,11 @@ import { contentTypePath, getAllContentSlugs, getContentBySlug } from '/lib/mdx'
 import { ContentType, PostFrontmatter, ProjectFrontmatter, SnippetFrontmatter } from '/types/content';
 
 type Props = {
-  contentType: ContentType;
   frontmatter: PostFrontmatter | ProjectFrontmatter | SnippetFrontmatter;
   source: string;
 };
 
-const Content = ({ contentType, frontmatter, source }: Props) => {
+const Content = ({ frontmatter, source }: Props) => {
   const { isFallback } = useRouter();
 
   const Component = useMemo(() => {
@@ -28,10 +27,14 @@ const Content = ({ contentType, frontmatter, source }: Props) => {
   return (
     <ContentLayout
       title={frontmatter.title}
-      description={'subtitle' in frontmatter ? frontmatter.subtitle : undefined}
-      readingTime={'readingTime' in frontmatter ? frontmatter.readingTime : undefined}
+      description={
+        frontmatter.type === ContentType.PROJECT || frontmatter.type === ContentType.SNIPPET
+          ? frontmatter.subtitle
+          : undefined
+      }
+      readingTime={frontmatter.type === ContentType.POST ? frontmatter.readingTime : undefined}
       tags={frontmatter.tags}
-      publishDate={contentType === ContentType.POST ? frontmatter.date : undefined}
+      publishDate={frontmatter.type === ContentType.POST ? frontmatter.date : undefined}
     >
       <Component />
     </ContentLayout>
@@ -48,19 +51,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [
     ...postsSlugs.map((slug) => ({
       params: {
-        content: ContentType.POST,
+        content: contentTypePath[ContentType.POST],
         slug: slug,
       },
     })),
     ...projectsSlugs.map((slug) => ({
       params: {
-        content: ContentType.PROJECT,
+        content: contentTypePath[ContentType.PROJECT],
         slug: slug,
       },
     })),
     ...snippetsSlugs.map((slug) => ({
       params: {
-        content: ContentType.SNIPPET,
+        content: contentTypePath[ContentType.SNIPPET],
         slug: slug,
       },
     })),
@@ -90,7 +93,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     return {
       props: {
-        contentType,
         frontmatter,
         source,
       },

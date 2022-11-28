@@ -35,12 +35,14 @@ export const getAllContentFrontMatters = async <T extends ContentType>(type: T) 
 
     const { data } = matter(fileSource);
 
-    const frontmatter = {
-      ...data,
-      slug: file.replace(/\.mdx/, ''),
-    };
+    const slug = file.replace(/\.mdx/, '');
 
-    return frontmatter as ContentFrontmatter<T>;
+    return {
+      ...data,
+      type,
+      slug,
+      extendedSlug: `${contentTypePath[type]}/${slug}`,
+    } as ContentFrontmatter<T>;
   });
 };
 
@@ -54,7 +56,9 @@ export const getContentBySlug = async <T extends ContentType>(type: T, slug: str
   return {
     frontmatter: {
       ...frontmatter,
+      type,
       slug,
+      extendedSlug: `${contentTypePath[type]}/${slug}`,
       ...(type === ContentType.POST ? { readingTime: Math.ceil(readingTime(source).minutes).toString() } : undefined),
     },
     source,
