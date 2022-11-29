@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
-import { useMemo } from 'react';
-import { getMDXComponent } from 'mdx-bundler/client';
 
+import MdxContent from '/components/Mdx';
 import ContentLayout from '/layouts/ContentLayout';
 import { contentTypePath, getAllContentSlugs, getContentBySlug } from '/lib/mdx';
 import { ContentType, PostFrontmatter, ProjectFrontmatter, SnippetFrontmatter } from '/types/content';
@@ -15,11 +14,7 @@ type Props = {
 const Content = ({ frontmatter, source }: Props) => {
   const { isFallback } = useRouter();
 
-  const Component = useMemo(() => {
-    if (!isFallback) return getMDXComponent(source);
-  }, [source, isFallback]);
-
-  if (isFallback || !Component) {
+  if (isFallback) {
     // TODO: Replace with better UI
     return <div>Loading...</div>;
   }
@@ -36,7 +31,7 @@ const Content = ({ frontmatter, source }: Props) => {
       tags={frontmatter.tags}
       publishDate={frontmatter.type === ContentType.POST ? frontmatter.date : undefined}
     >
-      <Component />
+      <MdxContent source={source} />
     </ContentLayout>
   );
 };
