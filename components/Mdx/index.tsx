@@ -14,6 +14,7 @@ const StyledWrapper = styled('div', {
   h2: tw`mt-[2em] mb-[1em]`,
   h3: tw`mt-[1.2em] mb-[0.6em]`,
   p: tw`mb-36`,
+  '& > ul, & > ol': tw`mb-36`,
 });
 
 const MdxContent = ({ source }: Props) => {
