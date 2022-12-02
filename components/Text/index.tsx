@@ -25,6 +25,7 @@ const Text = styled('span', {
     variant: {
       default: tw`text-current`,
       primary: tw`text-theme-colors-text-primary`,
+      secondary: tw`text-theme-colors-text-secondary`,
     },
   },
   defaultVariants: {

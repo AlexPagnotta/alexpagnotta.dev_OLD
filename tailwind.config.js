@@ -32,6 +32,7 @@ module.exports = {
           body: 'var(--colors-body)',
           text: {
             primary: 'var(--colors-text-primary)',
+            secondary: 'var(--colors-text-secondary)',
           },
           section: {
             bg: 'var(--colors-section-bg)',

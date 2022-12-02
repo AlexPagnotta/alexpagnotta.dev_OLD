@@ -2,6 +2,7 @@ const themeLight = {
   '.theme-light': {
     '--colors-body': 'hsl(var(--colors-white))',
     '--colors-text-primary': 'hsl(var(--colors-black))',
+    '--colors-text-secondary': 'hsla(var(--colors-black), 60%)',
     '--colors-section-bg': 'hsl(var(--colors-grey-lightest))',
     '--colors-section-bg-hover': 'hsl(var(--colors-grey-light))',
 
