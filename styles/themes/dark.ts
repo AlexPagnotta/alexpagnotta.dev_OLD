@@ -23,7 +23,6 @@ const themeDark = {
     '--colors-button-secondary-bg': 'hsl(var(--colors-black))',
     '--colors-button-secondary-bg-hover': 'var(--gradient-grey-dark)',
 
-    '--colors-chip-content': 'hsl(var(--colors-white))',
     '--colors-chip-bg': 'hsl(var(--colors-grey-dark))',
   },
 };

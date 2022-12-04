@@ -55,7 +55,6 @@ module.exports = {
             },
           },
           chip: {
-            content: 'var(--colors-chip-content)',
             bg: 'var(--colors-chip-bg)',
           },
         },
