@@ -54,9 +54,8 @@ module.exports = {
               bg: 'var(--colors-button-secondary-bg)',
             },
           },
-          chip: {
-            bg: 'var(--colors-chip-bg)',
-          },
+          'chip-bg': 'var(--colors-chip-bg)',
+          'code-block-bg': 'var(--colors-code-block-bg)',
         },
       },
     },
@@ -79,6 +78,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      mono: ['FiraCode', ...defaultTheme.fontFamily.mono],
     },
     fontSize: {
       'title-1': [

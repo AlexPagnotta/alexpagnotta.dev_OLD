@@ -1,9 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-import readingTime from 'reading-time';
-import { bundleMDX } from 'mdx-bundler';
 import matter from 'gray-matter';
+import { bundleMDX } from 'mdx-bundler';
+import readingTime from 'reading-time';
+import rehypePrettyCode from 'rehype-pretty-code';
 
 import { Content, ContentFrontmatter, ContentType } from '/types/content';
 
@@ -51,6 +52,10 @@ export const getContentBySlug = async <T extends ContentType>(type: T, slug: str
 
   const { code: source, frontmatter } = await bundleMDX({
     source: fileSource,
+    mdxOptions(options) {
+      options.rehypePlugins = [...(options.rehypePlugins ?? []), [rehypePrettyCode, { theme: 'css-variables' }]];
+      return options;
+    },
   });
 
   return {

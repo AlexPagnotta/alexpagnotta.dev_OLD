@@ -24,6 +24,21 @@ const themeDark = {
     '--colors-button-secondary-bg-hover': 'var(--gradient-grey-dark)',
 
     '--colors-chip-bg': 'hsl(var(--colors-grey-dark))',
+
+    '--colors-code-block-bg': 'hsl(var(--colors-black))',
+
+    // Code block theme
+    '--shiki-color-text': 'hsl(var(--colors-white))',
+    // '--shiki-color-background': 'hsl(var(--colors-white))',
+    '--shiki-token-constant': 'hsl(var(--colors-white))',
+    '--shiki-token-string': 'hsl(var(--colors-white))',
+    '--shiki-token-comment': 'hsl(var(--colors-white))',
+    '--shiki-token-keyword': 'hsl(var(--colors-white))',
+    '--shiki-token-parameter': 'hsl(var(--colors-white))',
+    '--shiki-token-function': 'hsl(var(--colors-white))',
+    '--shiki-token-string-expression': 'hsl(var(--colors-white))',
+    '--shiki-token-punctuation': 'hsl(var(--colors-white))',
+    ' --shiki-token-link': 'hsl(var(--colors-white))',
   },
 };
 

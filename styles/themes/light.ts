@@ -24,6 +24,21 @@ const themeLight = {
     '--colors-button-secondary-bg-hover': 'var(--gradient-grey)',
 
     '--colors-chip-bg': 'hsl(var(--colors-grey-light))',
+
+    '--colors-code-block-bg': 'hsl(var(--colors-white))',
+
+    // Code block theme
+    '--shiki-color-text': 'hsl(var(--colors-black))',
+    // '--shiki-color-background': 'hsl(var(--colors-black))',
+    '--shiki-token-constant': 'hsl(var(--colors-black))',
+    '--shiki-token-string': 'hsl(var(--colors-black))',
+    '--shiki-token-comment': 'hsl(var(--colors-black))',
+    '--shiki-token-keyword': '#hsl(var(--colors-black))',
+    '--shiki-token-parameter': 'hsl(var(--colors-black))',
+    '--shiki-token-function': 'hsl(var(--colors-black))',
+    '--shiki-token-string-expression': 'hsl(var(--colors-black))',
+    '--shiki-token-punctuation': 'hsl(var(--colors-black))',
+    ' --shiki-token-link': 'hsl(var(--colors-black))',
   },
 };
 
