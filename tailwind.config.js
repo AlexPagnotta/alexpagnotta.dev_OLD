@@ -34,9 +34,9 @@ module.exports = {
             primary: 'var(--colors-text-primary)',
             secondary: 'var(--colors-text-secondary)',
           },
-          section: {
-            bg: 'var(--colors-section-bg)',
-            'bg-hover': 'var(--colors-section-bg-hover)',
+          foreground: 'var(--colors-foreground)',
+          'content-item': {
+            'bg-hover': 'var(--colors-content-item-bg-hover)',
           },
           selection: {
             bg: 'var(--colors-selection-bg)',

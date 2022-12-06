@@ -3,8 +3,8 @@ const themeDark = {
     '--colors-body': 'hsl(var(--colors-black))',
     '--colors-text-primary': 'hsl(var(--colors-white))',
     '--colors-text-secondary': 'hsla(var(--colors-white), 60%)',
-    '--colors-section-bg': 'hsl(var(--colors-grey-darkest))',
-    '--colors-section-bg-hover': 'hsl(var(--colors-grey-dark))',
+    '--colors-foreground': 'hsl(var(--colors-grey-darkest))',
+    '--colors-content-item-bg-hover': 'hsl(var(--colors-grey-dark))',
 
     '--colors-selection-bg': 'hsl(var(--colors-yellow))',
     '--colors-selection-content': 'hsl(var(--colors-black))',

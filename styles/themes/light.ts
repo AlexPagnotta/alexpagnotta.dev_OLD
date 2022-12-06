@@ -3,8 +3,8 @@ const themeLight = {
     '--colors-body': 'hsl(var(--colors-white))',
     '--colors-text-primary': 'hsl(var(--colors-black))',
     '--colors-text-secondary': 'hsla(var(--colors-black), 60%)',
-    '--colors-section-bg': 'hsl(var(--colors-grey-lightest))',
-    '--colors-section-bg-hover': 'hsl(var(--colors-grey-light))',
+    '--colors-foreground': 'hsl(var(--colors-grey-lightest))',
+    '--colors-content-item-bg-hover': 'hsl(var(--colors-grey-light))',
 
     '--colors-selection-bg': 'hsl(var(--colors-pink))',
     '--colors-selection-content': 'hsl(var(--colors-white))',

@@ -19,7 +19,7 @@ const StyledContentItemWrapper = styled('div', {
   ...tw`relative isolate`,
 
   '&:before': {
-    ...tw`content-[""] absolute -inset-20-px z-[-1] opacity-0 bg-theme-colors-section-bg-hover rounded-lg`,
+    ...tw`content-[""] absolute -inset-20-px z-[-1] opacity-0 bg-theme-colors-content-item-bg-hover rounded-lg`,
     transition: 'opacity 0.5s',
   },
 
@@ -52,7 +52,7 @@ const Home = ({ contents }: Props) => (
         <Container>
           <H2 tw='mb-24-px'>My Stuff</H2>
         </Container>
-        <div tw='bg-theme-colors-section-bg py-64-px'>
+        <div tw='bg-theme-colors-foreground py-64-px'>
           <Container tw='flex flex-col gap-48-px'>
             {contents?.map((content) => (
               <article key={content.extendedSlug}>
