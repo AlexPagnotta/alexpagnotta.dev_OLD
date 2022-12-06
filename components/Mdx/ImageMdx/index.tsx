@@ -1,6 +1,6 @@
 import NextImage, { ImageProps } from 'next/image';
 
-import Text from '../Text';
+import Text from '../../Text';
 
 const ImageMdx = (props: ImageProps) => {
   return (

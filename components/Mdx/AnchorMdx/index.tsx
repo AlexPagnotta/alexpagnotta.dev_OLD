@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import Anchor from '../Anchor';
+import Anchor from '../../Anchor';
 
 const AnchorMdx = ({ href, ...rest }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
   const isInternal = href && (href.startsWith('/') || href.startsWith('#'));

@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import matter from 'gray-matter';
-import { bundleMDX } from 'mdx-bundler';
+import { serialize } from 'next-mdx-remote/serialize';
 import readingTime from 'reading-time';
 import rehypePrettyCode from 'rehype-pretty-code';
 
@@ -50,11 +50,13 @@ export const getAllContentFrontMatters = async <T extends ContentType>(type: T) 
 export const getContentBySlug = async <T extends ContentType>(type: T, slug: string) => {
   const fileSource = fs.readFileSync(path.join(contentFolder, contentTypePath[type], `${slug}.mdx`), 'utf8');
 
-  const { code: source, frontmatter } = await bundleMDX({
-    source: fileSource,
-    mdxOptions(options) {
-      options.rehypePlugins = [...(options.rehypePlugins ?? []), [rehypePrettyCode, { theme: 'css-variables' }]];
-      return options;
+  const { content, data: frontmatter } = matter(fileSource);
+
+  const source = await serialize(content, {
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [[rehypePrettyCode, { theme: 'css-variables' }]],
+      format: 'mdx',
     },
   });
 
@@ -64,7 +66,7 @@ export const getContentBySlug = async <T extends ContentType>(type: T, slug: str
       type,
       slug,
       extendedSlug: `${contentTypePath[type]}/${slug}`,
-      ...(type === ContentType.POST ? { readingTime: Math.ceil(readingTime(source).minutes).toString() } : undefined),
+      ...(type === ContentType.POST ? { readingTime: Math.ceil(readingTime(content).minutes).toString() } : undefined),
     },
     source,
   } as Content<T>;

@@ -4,12 +4,9 @@ import { useRouter } from 'next/router';
 import MdxContent from '/components/Mdx';
 import ContentLayout from '/layouts/ContentLayout';
 import { contentTypePath, getAllContentSlugs, getContentBySlug } from '/lib/mdx';
-import { ContentType, PostFrontmatter, ProjectFrontmatter, SnippetFrontmatter } from '/types/content';
+import { ContentType, Post, Project, Snippet } from '/types/content';
 
-type Props = {
-  frontmatter: PostFrontmatter | ProjectFrontmatter | SnippetFrontmatter;
-  source: string;
-};
+type Props = Post | Project | Snippet;
 
 const Content = ({ frontmatter, source }: Props) => {
   const { isFallback } = useRouter();

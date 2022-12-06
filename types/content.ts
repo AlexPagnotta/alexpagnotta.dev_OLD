@@ -1,3 +1,5 @@
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+
 export enum ContentType {
   POST = 'post',
   PROJECT = 'project',
@@ -20,7 +22,7 @@ export type PostFrontmatter = BaseFrontmatter & {
 
 export type Post = {
   frontmatter: PostFrontmatter;
-  source: string;
+  source: MDXRemoteSerializeResult;
 };
 
 export type ProjectFrontmatter = BaseFrontmatter & {
@@ -30,7 +32,7 @@ export type ProjectFrontmatter = BaseFrontmatter & {
 
 export type Project = {
   frontmatter: ProjectFrontmatter;
-  source: string;
+  source: MDXRemoteSerializeResult;
 };
 
 export type SnippetFrontmatter = BaseFrontmatter & {
@@ -40,7 +42,7 @@ export type SnippetFrontmatter = BaseFrontmatter & {
 
 export type Snippet = {
   frontmatter: SnippetFrontmatter;
-  source: string;
+  source: MDXRemoteSerializeResult;
 };
 
 export type ContentFrontmatter<T> = T extends ContentType.POST
