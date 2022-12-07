@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import readingTime from 'reading-time';
 import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
 
 import { Content, ContentFrontmatter, ContentType } from '/types/content';
 
@@ -55,7 +56,7 @@ export const getContentBySlug = async <T extends ContentType>(type: T, slug: str
   const source = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [],
-      rehypePlugins: [[rehypePrettyCode, { theme: 'css-variables' }]],
+      rehypePlugins: [rehypeSlug, [rehypePrettyCode, { theme: 'css-variables' }]],
       format: 'mdx',
     },
   });

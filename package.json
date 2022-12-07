@@ -19,6 +19,7 @@
     "react-dom": "18.2.0",
     "reading-time": "^1.5.0",
     "rehype-pretty-code": "^0.5.1",
+    "rehype-slug": "^5.1.0",
     "shiki": "^0.11.1"
   },
   "devDependencies": {
