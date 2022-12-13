@@ -17,6 +17,12 @@ const DefaultTheme = Theme.LIGHT;
 
 export const LocalStorageKey = 'theme';
 
+const ThemeMode = {
+  [Theme.LIGHT]: 'light',
+  [Theme.DARK]: 'dark',
+  // [Theme.RED]: 'dark'
+} as const;
+
 const ThemeContext = React.createContext<ContextState | undefined>(undefined);
 
 const prefersDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -24,6 +30,7 @@ const prefersDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').
 const updateThemeClass = (prevTheme: Theme, nextTheme: Theme) => {
   document.body.classList.remove('theme-' + prevTheme);
   document.body.classList.add('theme-' + nextTheme);
+  document.documentElement.style.setProperty('color-scheme', ThemeMode[nextTheme]);
 };
 
 const updateThemeLocalStorage = (theme: Theme) => {
