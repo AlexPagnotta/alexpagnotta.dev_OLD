@@ -22,9 +22,25 @@ const StyledAnchor = styled('a', {
           textGradient: 'var(--colors-link-header-hover)',
         },
       },
+      heading: {
+        ...tw`relative`,
+        '&:before': {
+          ...tw`absolute left-[-1em] content-['#'] opacity-0`,
+          transition: 'opacity 0.3s',
+        },
+        '@support-hover': {
+          '&:hover': {
+            '&:before': tw`opacity-40`,
+          },
+        },
+        '&:focus': {
+          ...tw`ring-0`,
+          '&:before': tw`opacity-40`,
+        },
+      },
       default: {
         ...tw`text-theme-colors-link border-b-2 border-b-transparent`,
-        ...tw`support-hover:hover:border-theme-colors-link focus:(ring-0 border-theme-colors-link)`,
+        ...tw`support-hover:hover:border-current focus:(ring-0 border-current)`,
         transition: 'border-color 0.3s',
       },
     },

@@ -11,17 +11,15 @@ type PolymorphicElement = 'a' | 'button';
 type Props<T extends PolymorphicElement> = {
   as?: T;
   variant?: VariantProps<typeof StyledButton>['variant'];
-  children?: React.ReactNode;
 } & (
   | {
       icon?: IconProps['name'];
       iconStart?: never;
       iconEnd?: never;
-      children?: never;
     }
   | { icon?: never; iconStart?: IconProps['name']; iconEnd?: IconProps['name']; children: React.ReactNode }
 ) &
-  React.ComponentPropsWithoutRef<T>;
+  Omit<React.ComponentPropsWithoutRef<T>, 'children'>;
 
 const StyledButton = styled('button', {
   ...tw`appearance-none select-none cursor-pointer disabled:(cursor-not-allowed opacity-60)`,
@@ -85,18 +83,21 @@ const StyledButton = styled('button', {
 
 const StyledIcon = styled(Icon, { ...tw`h-24 flex-shrink-0 pointer-events-none` });
 
-const Button = <T extends PolymorphicElement = 'button'>({ icon, iconStart, iconEnd, children, ...rest }: Props<T>) => {
+const Button = <T extends PolymorphicElement = 'button'>(props: Props<T>) => {
+  // Props destructured to get the "rest" props
+  const { icon, iconStart, iconEnd, ...rest } = props;
+
   return (
-    <StyledButton buttonType={icon ? 'icon' : 'default'} {...rest}>
-      {icon ? (
-        <StyledIcon name={icon} aria-hidden />
-      ) : (
+    <StyledButton buttonType={props.icon ? 'icon' : 'default'} {...rest}>
+      {props.iconStart || props.iconEnd ? (
         <>
-          {iconStart && <StyledIcon name={iconStart} aria-hidden />}
-          {children}
-          {iconEnd && <StyledIcon name={iconEnd} aria-hidden />}
+          {props.iconStart && <StyledIcon name={props.iconStart} aria-hidden />}
+          {props.children}
+          {props.iconEnd && <StyledIcon name={props.iconEnd} aria-hidden />}
         </>
-      )}
+      ) : props.icon ? (
+        <StyledIcon name={props.icon} aria-hidden />
+      ) : null}
     </StyledButton>
   );
 };

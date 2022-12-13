@@ -14,7 +14,7 @@ const ContentLayout = ({ children, ...contentHeroProps }: Props) => {
         <Container size='md' tw='mt-72-px mb-24-px' as='header'>
           <ContentHero {...contentHeroProps} />
         </Container>
-        <div tw='bg-theme-colors-section-bg pt-64-px pb-96-px'>
+        <div tw='bg-theme-colors-foreground pt-64-px pb-96-px'>
           <Container size='md'>{children}</Container>
         </div>
       </article>

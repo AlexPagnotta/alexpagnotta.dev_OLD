@@ -32,10 +32,11 @@ module.exports = {
           body: 'var(--colors-body)',
           text: {
             primary: 'var(--colors-text-primary)',
+            secondary: 'var(--colors-text-secondary)',
           },
-          section: {
-            bg: 'var(--colors-section-bg)',
-            'bg-hover': 'var(--colors-section-bg-hover)',
+          foreground: 'var(--colors-foreground)',
+          'content-item': {
+            'bg-hover': 'var(--colors-content-item-bg-hover)',
           },
           selection: {
             bg: 'var(--colors-selection-bg)',
@@ -53,9 +54,14 @@ module.exports = {
               bg: 'var(--colors-button-secondary-bg)',
             },
           },
-          chip: {
-            content: 'var(--colors-chip-content)',
-            bg: 'var(--colors-chip-bg)',
+          'chip-bg': 'var(--colors-chip-bg)',
+
+          'code-block': {
+            bg: 'var(--colors-code-block-bg)',
+            selection: {
+              text: 'var(--colors-code-block-syntax-plain)',
+              bg: 'var(--colors-code-block-highlight)',
+            },
           },
         },
       },
@@ -79,6 +85,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      mono: ['FiraCode', ...defaultTheme.fontFamily.mono],
     },
     fontSize: {
       'title-1': [

@@ -37,7 +37,7 @@ const ContentHero = ({ tags, title, publishDate, readingTime, description }: Pro
             </time>
           )}
           {publishDate && readingTime && <span aria-hidden> - </span>}
-          {readingTime && <span>{readingTime}</span>}
+          {readingTime && <span>{readingTime} minutes read</span>}
         </Text>
       )}
 
