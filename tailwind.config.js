@@ -55,7 +55,14 @@ module.exports = {
             },
           },
           'chip-bg': 'var(--colors-chip-bg)',
-          'code-block-bg': 'var(--colors-code-block-bg)',
+
+          'code-block': {
+            bg: 'var(--colors-code-block-bg)',
+            selection: {
+              text: 'var(--colors-code-block-syntax-plain)',
+              bg: 'var(--colors-code-block-highlight)',
+            },
+          },
         },
       },
     },

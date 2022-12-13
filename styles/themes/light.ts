@@ -1,8 +1,10 @@
+import shiki from '../shiki';
+
 const themeLight = {
   '.theme-light': {
     '--colors-body': 'hsl(var(--colors-white))',
     '--colors-text-primary': 'hsl(var(--colors-black))',
-    '--colors-text-secondary': 'hsla(var(--colors-black), 60%)',
+    '--colors-text-secondary': 'hsla(var(--colors-grey))',
     '--colors-foreground': 'hsl(var(--colors-grey-lightest))',
     '--colors-content-item-bg-hover': 'hsl(var(--colors-grey-light))',
 
@@ -26,19 +28,20 @@ const themeLight = {
     '--colors-chip-bg': 'hsl(var(--colors-grey-light))',
 
     '--colors-code-block-bg': 'hsl(var(--colors-white))',
+    '--colors-code-block-highlight': 'hsl(var(--colors-grey-light))',
+    '--colors-code-block-error-text': 'hsl(var(--colors-pink-dark))',
+    '--colors-code-block-error-bg': 'hsl(var(--colors-pink-lightest))',
+    '--colors-code-block-syntax-plain': 'hsl(var(--colors-black))',
+    '--colors-code-block-syntax-comment': 'hsl(var(--colors-grey))',
+    '--colors-code-block-syntax-keyword': 'hsl(var(--colors-pink))',
+    '--colors-code-block-syntax-tag': 'hsl(var(--colors-pink-dark))',
+    '--colors-code-block-syntax-punctuation': 'hsl(var(--colors-black))',
+    '--colors-code-block-syntax-definition': 'hsl(var(--colors-pink))',
+    '--colors-code-block-syntax-property': 'hsl(var(--colors-pink))',
+    '--colors-code-block-syntax-static': 'hsl(var(--colors-pink-dark))',
+    '--colors-code-block-syntax-string': 'hsl(var(--colors-pink-dark))',
 
-    // Code block theme
-    '--shiki-color-text': 'hsl(var(--colors-black))',
-    // '--shiki-color-background': 'hsl(var(--colors-black))',
-    '--shiki-token-constant': 'hsl(var(--colors-black))',
-    '--shiki-token-string': 'hsl(var(--colors-black))',
-    '--shiki-token-comment': 'hsl(var(--colors-black))',
-    '--shiki-token-keyword': '#hsl(var(--colors-black))',
-    '--shiki-token-parameter': 'hsl(var(--colors-black))',
-    '--shiki-token-function': 'hsl(var(--colors-black))',
-    '--shiki-token-string-expression': 'hsl(var(--colors-black))',
-    '--shiki-token-punctuation': 'hsl(var(--colors-black))',
-    ' --shiki-token-link': 'hsl(var(--colors-black))',
+    ...shiki,
   },
 };
 

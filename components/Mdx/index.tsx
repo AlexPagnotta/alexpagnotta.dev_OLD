@@ -20,11 +20,17 @@ const StyledWrapper = styled('div', {
     ...tw`mb-36 -mx-32-px md:mx-0 text-body-2`,
     pre: {
       ...tw`bg-theme-colors-code-block-bg whitespace-pre overflow-x-auto md:rounded-lg p-32-px`,
+      '::selection': {
+        ...tw`bg-theme-colors-code-block-selection-bg text-theme-colors-code-block-selection-text`,
+      },
       '& > code': tw`grid`,
     },
   },
   // Inline Code
   '& span[data-rehype-pretty-code-fragment]': tw`bg-theme-colors-code-block-bg rounded-sm p-4`,
+
+  // Live Code Block
+  '.live-code-block-wrapper': tw`mb-36 overflow-hidden -mx-32-px md:(rounded-lg mx-0)`,
 });
 
 const MdxContent = ({ source }: Props) => {

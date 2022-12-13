@@ -8,6 +8,7 @@ import HeadingMdx from './HeadingMdx';
 import ImageMdx from './ImageMdx';
 
 const Test = dynamic(() => import('./widgets/Test'));
+const TestLiveCodeBlock = dynamic(() => import('./widgets/TestLiveCodeBlock'));
 
 export const MdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => <HeadingMdx variant='h2' {...props} />,
@@ -22,4 +23,5 @@ export const MdxComponents = {
 
   // Widget Components
   Test,
+  TestLiveCodeBlock,
 };
