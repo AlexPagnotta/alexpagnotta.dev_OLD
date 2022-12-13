@@ -27,7 +27,7 @@ const customStyles = {
   'html, body, #__next': {
     ...tw`h-full`,
   },
-  body: {
+  'html > body': {
     ...tw`bg-theme-colors-body antialiased font-sans text-body-3 text-theme-colors-text-primary`,
   },
 
