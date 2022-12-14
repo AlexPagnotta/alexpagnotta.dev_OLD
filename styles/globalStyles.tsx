@@ -16,8 +16,6 @@ const customStyles = {
     '@md': {
       fontSize: '62.5%', // Set default size to 62.5% of 16px -> 10px, this way 1 rem -> 10px
     },
-
-    WebkitTapHighlightColor: 'transparent',
   },
 
   // Reset

@@ -23,14 +23,14 @@ const StyledContentItemWrapper = styled('div', {
     transition: 'opacity 0.5s',
   },
 
-  '@support-hover': {
-    '&:hover': {
-      '&:before': { ...tw`opacity-50` },
-    },
+  '&:hover': {
+    '&:before': { ...tw`opacity-50` },
   },
 });
 
 const StyledContentItemAnchor = styled('a', {
+  WebkitTapHighlightColor: 'transparent',
+
   '&:focus': {
     ...tw`ring-0`,
     [`& ${StyledContentItemWrapper}`]: {

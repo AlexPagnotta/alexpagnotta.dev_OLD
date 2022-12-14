@@ -26,6 +26,7 @@ const StyledButton = styled('button', {
   ...tw`inline-flex justify-center items-center h-44 overflow-hidden isolate active:scale-95`,
   transition: 'transform 0.3s',
   willChange: 'transform', // Fix text bluriness on transform
+  WebkitTapHighlightColor: 'transparent',
 
   '&:before': {
     ...tw`content-[""] absolute inset-0 z-[-1] opacity-0`,
@@ -39,12 +40,10 @@ const StyledButton = styled('button', {
     },
   },
 
-  '@support-hover': {
-    '&:hover': {
-      '&:not(:disabled)': {
-        '&:before': {
-          ...tw`opacity-100`,
-        },
+  '&:hover': {
+    '&:not(:disabled)': {
+      '&:before': {
+        ...tw`opacity-100`,
       },
     },
   },
