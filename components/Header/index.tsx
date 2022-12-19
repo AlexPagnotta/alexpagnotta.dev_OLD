@@ -3,13 +3,14 @@ import Link from 'next/link';
 import Anchor from '../Anchor';
 import Container from '../Container';
 import Text from '../Text';
+import Switch from '../Switch';
 
 import Logo from './Logo';
 
 import { useTheme } from '/contexts/Theme';
 
 const Header = () => {
-  const { toggleMode } = useTheme();
+  const { theme, toggleMode } = useTheme();
 
   return (
     <Container tw='flex justify-between items-center h-96-px md:h-152-px' as='header'>
@@ -24,10 +25,13 @@ const Header = () => {
             Contact Me
           </Anchor>
         </Text>
-        {/* TODO: Temp */}
-        <button onClick={() => toggleMode()}>
-          <Text size='body-3'>Toggle</Text>
-        </button>
+        <Switch
+          id='toggle-mode-switch'
+          checked={theme === 'light'}
+          onChange={() => toggleMode()}
+          variant='mode'
+          aria-label='Toggle dark mode'
+        />
       </div>
     </Container>
   );

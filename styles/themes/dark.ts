@@ -27,6 +27,10 @@ const themeDark = {
 
     '--colors-chip-bg': 'hsl(var(--colors-grey-dark))',
 
+    '--colors-switch-bg': 'hsl(var(--colors-grey-light))',
+    '--colors-switch-bg-checked': 'hsl(var(--colors-yellow))',
+    '--colors-switch-content': 'hsl(var(--colors-grey-dark))',
+
     '--colors-code-block-bg': 'hsl(var(--colors-black))',
     '--colors-code-block-highlight': 'hsl(var(--colors-grey-dark))',
     '--colors-code-block-error-text': 'hsl(var(--colors-pink-dark))',
