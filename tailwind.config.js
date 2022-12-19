@@ -55,6 +55,11 @@ module.exports = {
             },
           },
           'chip-bg': 'var(--colors-chip-bg)',
+          switch: {
+            content: 'var(--colors-switch-content)',
+            'bg-checked': 'var(--colors-switch-bg-checked)',
+            bg: 'var(--colors-switch-bg)',
+          },
 
           'code-block': {
             bg: 'var(--colors-code-block-bg)',
@@ -163,7 +168,7 @@ module.exports = {
       sm: '6px',
       md: '8px',
       lg: '14px',
-      full: '100%',
+      full: '999px',
     },
     screens: {
       sm: '640px',
