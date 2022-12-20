@@ -3,31 +3,50 @@ import tw from 'twin.macro';
 
 import { styled } from '/stitches.config';
 
-type Props = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  variant?: VariantProps<typeof StyledAnchor>['variant'];
-};
+type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'children'> &
+  (
+    | {
+        variant: 'header';
+        children: string; // String is needed to animate the gradient bg on hover
+      }
+    | {
+        variant: Exclude<VariantProps<typeof StyledAnchor>['variant'], 'header'>;
+        children: React.ReactNode;
+      }
+  );
 
 const StyledAnchor = styled('a', {
   WebkitTapHighlightColor: 'transparent',
   variants: {
     variant: {
       header: {
-        ...tw`font-bold`,
+        ...tw`relative inline-block font-bold`,
+
+        '& span, &:before': {
+          transition: 'opacity 0.3s',
+        },
+
+        '&:before': {
+          ...tw`absolute content-[attr(data-content)] inset-0 opacity-0`,
+          textGradient: 'var(--colors-link-header-hover)',
+        },
 
         '&:hover': {
-          textGradient: 'var(--colors-link-header-hover)', // TODO: Add fade in animation
+          '& span': tw`opacity-0`,
+          '&:before': tw`opacity-100`,
         },
 
         '&:focus': {
           ...tw`ring-0`,
-          textGradient: 'var(--colors-link-header-hover)',
+          '& span': tw`opacity-0`,
+          '&:before': tw`opacity-100`,
         },
       },
       heading: {
         ...tw`relative`,
         '&:before': {
-          ...tw`absolute left-[-1em] content-['#'] opacity-0`,
-          transition: 'opacity 0.3s',
+          ...tw`absolute left-[-1em] content-["#"] opacity-0`,
+          transition: 'opacity 1s ease',
         },
 
         '&:hover': {
@@ -52,9 +71,11 @@ const StyledAnchor = styled('a', {
 });
 
 const Anchor = ({ variant, children, ...rest }: Props) => {
+  const isHeaderVariant = variant === 'header';
+
   return (
-    <StyledAnchor variant={variant} {...rest}>
-      {children}
+    <StyledAnchor variant={variant} {...rest} {...(isHeaderVariant ? { 'data-content': children } : {})}>
+      {isHeaderVariant ? <span>{children}</span> : children}
     </StyledAnchor>
   );
 };
