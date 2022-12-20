@@ -14,8 +14,8 @@ const Header = () => {
 
   return (
     <Container tw='flex justify-between items-center h-96-px md:h-152-px' as='header'>
-      <Link href='/'>
-        <a aria-label='Go To Homepage'>
+      <Link href='/' passHref>
+        <a aria-label='Go To Homepage' tw='rounded-full'>
           <Logo />
         </a>
       </Link>

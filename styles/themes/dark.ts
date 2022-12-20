@@ -4,14 +4,14 @@ const themeDark = {
   '.theme-dark': {
     '--colors-body': 'hsl(var(--colors-black))',
     '--colors-text-primary': 'hsl(var(--colors-white))',
-    '--colors-text-secondary': 'hsla(var(--colors-grey))',
+    '--colors-text-secondary': 'hsl(var(--colors-grey))',
     '--colors-foreground': 'hsl(var(--colors-grey-darkest))',
     '--colors-content-item-bg-hover': 'hsl(var(--colors-grey-dark))',
 
     '--colors-selection-bg': 'hsl(var(--colors-yellow))',
     '--colors-selection-content': 'hsl(var(--colors-black))',
 
-    '--colors-focus-ring': 'hsl(var(--colors-white))',
+    '--colors-focus-ring': 'hsl(var(--colors-yellow))',
 
     '--colors-link': 'hsl(var(--colors-yellow))',
     '--colors-link-header-hover': 'var(--gradient-yellow)',

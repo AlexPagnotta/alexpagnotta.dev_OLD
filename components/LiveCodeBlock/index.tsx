@@ -53,9 +53,10 @@ const StyledLayout = styled('div', {
   '.theme-dark &': { colorScheme: 'dark' },
   '.sp-stack': tw`h-352`,
   '.sp-tabs': tw`border-0`,
-  '.sp-tab-button': tw`h-60`,
-  '.cm-content': tw`focus:ring-0`,
+  '.sp-tabs-scrollable-container': tw`py-10-px px-12-px`,
   '.sp-code-editor': {
+    '.sp-cm:focus-visible .cm-editor': tw`bg-theme-colors-code-block-selection-bg `,
+    '.cm-content': tw`ring-0 px-20-px`,
     '::selection': {
       ...tw`bg-theme-colors-code-block-selection-bg text-theme-colors-code-block-selection-text`,
     },

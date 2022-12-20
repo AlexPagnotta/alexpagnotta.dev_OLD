@@ -4,7 +4,7 @@ const themeLight = {
   '.theme-light': {
     '--colors-body': 'hsl(var(--colors-white))',
     '--colors-text-primary': 'hsl(var(--colors-black))',
-    '--colors-text-secondary': 'hsla(var(--colors-grey))',
+    '--colors-text-secondary': 'hsl(var(--colors-grey))',
     '--colors-foreground': 'hsl(var(--colors-grey-lightest))',
     '--colors-content-item-bg-hover': 'hsl(var(--colors-grey-light))',
 

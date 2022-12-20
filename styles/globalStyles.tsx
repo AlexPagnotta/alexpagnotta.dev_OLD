@@ -38,7 +38,7 @@ const customStyles = {
 
   // Custom style for keyboard interaction focus
   ':focus-visible': {
-    ...tw`outline-none ring-4 ring-theme-colors-focus-ring`, // TODO: Temp style
+    ...tw`outline-none ring-4 ring-theme-colors-focus-ring`,
   },
 
   // Custom selection colors
