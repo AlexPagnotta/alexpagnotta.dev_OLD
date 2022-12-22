@@ -10,8 +10,8 @@ type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'children'> &
         children: string; // String is needed to animate the gradient bg on hover
       }
     | {
-        variant: Exclude<VariantProps<typeof StyledAnchor>['variant'], 'header'>;
-        children: React.ReactNode;
+        variant?: Exclude<VariantProps<typeof StyledAnchor>['variant'], 'header'>;
+        children?: React.ReactNode;
       }
   );
 
