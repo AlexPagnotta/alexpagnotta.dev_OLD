@@ -71,7 +71,7 @@ const StyledButton = styled('button', {
     },
     buttonType: {
       default: {
-        ...tw`px-18-px w-max rounded-md gap-8 text-body-3 font-bold`,
+        ...tw`px-18-px w-max rounded-md gap-8 text-body-2 font-bold`,
       },
       icon: {
         ...tw`w-44 rounded-full`,

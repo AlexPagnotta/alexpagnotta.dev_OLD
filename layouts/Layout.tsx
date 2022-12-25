@@ -1,5 +1,5 @@
 import Footer from '/components/Footer';
-import Header from '/components/Header';
+import Header, { skipContentSectionId } from '/components/Header';
 import { styled } from '/stitches.config';
 
 type Props = {
@@ -12,7 +12,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <Main>{children}</Main>
+      <Main id={skipContentSectionId}>{children}</Main>
       <Footer />
     </>
   );
