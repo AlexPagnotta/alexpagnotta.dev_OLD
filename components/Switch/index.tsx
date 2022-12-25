@@ -16,13 +16,15 @@ const StyledSwitch = styled('input', {
   ...tw`relative appearance-none m-0 flex-shrink-0 cursor-pointer inline-block`,
   ...tw`rounded-full bg-theme-colors-switch-bg w-48 h-28 md:(w-56 h-32)`,
 
-  transition: 'background 0.2s',
+  '--animation-duration': '0.2s',
+
+  transition: 'background var(--animation-duration)',
 
   '&:after': {
     ...tw`content-[""] absolute left-4 top-4 bottom-4 w-20 h-20 md:(w-24 h-24)`,
     ...tw`rounded-full bg-theme-colors-switch-content`,
     transform: 'translateX(var(--x-translate, 0)) scale(var(--scale, 1))',
-    transition: 'transform 0.2s',
+    transition: 'transform var(--animation-duration)',
   },
 
   '&:checked': {
@@ -47,7 +49,7 @@ const StyledSwitch = styled('input', {
       default: {
         '&:checked': {
           ...tw`bg-theme-colors-switch-bg-checked`,
-          transition: 'background 0.2s',
+          transition: 'background var(--animation-duration)',
         },
       },
     },

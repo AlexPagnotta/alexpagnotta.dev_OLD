@@ -15,6 +15,11 @@ type Props = {
   contents: (PostFrontmatter | ProjectFrontmatter | SnippetFrontmatter)[];
 };
 
+const StyledContentWrapper = styled('div', {
+  ...tw`bg-theme-colors-foreground py-64-px`,
+  transition: 'background var(--animation-mode-duration) var(--animation-mode-function)',
+});
+
 const StyledContentItemWrapper = styled('div', {
   ...tw`relative isolate`,
 
@@ -52,7 +57,7 @@ const Home = ({ contents }: Props) => (
         <Container>
           <H2 tw='mb-24-px'>My Stuff</H2>
         </Container>
-        <div tw='bg-theme-colors-foreground py-64-px'>
+        <StyledContentWrapper>
           <Container tw='flex flex-col gap-48-px'>
             {contents?.map((content) => (
               <article key={content.extendedSlug}>
@@ -75,7 +80,7 @@ const Home = ({ contents }: Props) => (
               </article>
             ))}
           </Container>
-        </div>
+        </StyledContentWrapper>
       </section>
     </div>
   </Layout>

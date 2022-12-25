@@ -26,9 +26,11 @@ type Props<T extends PolymorphicElement> = {
 const StyledButton = styled('button', {
   ...tw`appearance-none select-none cursor-pointer disabled:(cursor-not-allowed opacity-60)`,
   ...tw`inline-flex justify-center items-center h-44 overflow-hidden isolate active:scale-95`,
-  transition: 'transform 0.3s',
   willChange: 'transform', // Fix text bluriness on transform
   WebkitTapHighlightColor: 'transparent',
+  transitionProperty: 'transform, background, border',
+  transitionDuration: '0.3s, var(--animation-mode-duration)',
+  transitionTimingFunction: 'var(--animation-mode-function)',
 
   '&:before': {
     ...tw`content-[""] absolute inset-0 z-[-1] opacity-0`,

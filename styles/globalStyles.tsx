@@ -2,6 +2,7 @@ import tw, { globalStyles } from 'twin.macro';
 
 import { globalCss } from '../stitches.config';
 
+import animation from './animation';
 import colors from './colors';
 import themeDark from './themes/dark';
 import themeLight from './themes/light';
@@ -11,6 +12,7 @@ const customStyles = {
     ...themeLight,
     ...themeDark,
     ...colors,
+    ...animation,
 
     fontSize: '54.6875%', // Decrease default size on mobile, using rems it will automatically scale down all font sizes
     '@md': {
@@ -27,6 +29,9 @@ const customStyles = {
   },
   'html > body': {
     ...tw`bg-theme-colors-body antialiased font-sans text-body-3 text-theme-colors-text-primary`,
+    transitionProperty: 'background, color',
+    transitionDuration: 'var(--animation-mode-duration)',
+    transitionTimingFunction: 'var(--animation-mode-function)',
   },
 
   // Focus outline
