@@ -20,10 +20,12 @@ const themeDark = {
 
     '--colors-button-primary-content': 'hsl(var(--colors-black))',
     '--colors-button-primary-bg': 'hsl(var(--colors-white))',
-    '--colors-button-primary-bg-hover': 'var(--gradient-grey)',
+    '--colors-button-primary-content-hover': 'hsl(var(--colors-yellow-dark))',
+    '--colors-button-primary-bg-hover': 'hsl(var(--colors-yellow-light))',
     '--colors-button-secondary-content': 'hsl(var(--colors-white))',
     '--colors-button-secondary-bg': 'hsl(var(--colors-black))',
-    '--colors-button-secondary-bg-hover': 'var(--gradient-grey-dark)',
+    '--colors-button-secondary-content-hover': 'hsl(var(--colors-yellow-dark))',
+    '--colors-button-secondary-bg-hover': 'hsl(var(--colors-yellow-light))',
 
     '--colors-chip-bg': 'hsl(var(--colors-grey-dark))',
 
@@ -34,7 +36,7 @@ const themeDark = {
     '--colors-code-block-bg': 'hsl(var(--colors-black))',
     '--colors-code-block-highlight': 'hsl(var(--colors-grey-dark))',
     '--colors-code-block-error-text': 'hsl(var(--colors-pink-dark))',
-    '--colors-code-block-error-bg': 'hsl(var(--colors-pink-lightest))',
+    '--colors-code-block-error-bg': 'hsl(var(--colors-pink-light))',
     '--colors-code-block-syntax-plain': 'hsl(var(--colors-white))',
     '--colors-code-block-syntax-comment': 'hsl(var(--colors-grey))',
     '--colors-code-block-syntax-keyword': 'hsl(var(--colors-yellow))',

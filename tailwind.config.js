@@ -19,10 +19,14 @@ module.exports = {
         darkest: withOpacity('var(--colors-grey-darkest)'),
       },
       yellow: {
+        light: withOpacity('var(--colors-yellow-light)'),
         DEFAULT: withOpacity('var(--colors-yellow)'),
+        dark: withOpacity('var(--colors-yellow-dark)'),
       },
       pink: {
+        light: withOpacity('var(--colors-pink-light)'),
         DEFAULT: withOpacity('var(--colors-pink)'),
+        dark: withOpacity('var(--colors-pink-dark)'),
       },
       transparent: 'transparent',
       current: 'currentColor',
@@ -48,10 +52,14 @@ module.exports = {
             primary: {
               content: 'var(--colors-button-primary-content)',
               bg: 'var(--colors-button-primary-bg)',
+              'content-hover': 'var(--colors-button-primary-content-hover)',
+              'bg-hover': 'var(--colors-button-primary-bg-hover)',
             },
             secondary: {
               content: 'var(--colors-button-secondary-content)',
               bg: 'var(--colors-button-secondary-bg)',
+              'content-hover': 'var(--colors-button-secondary-content-hover)',
+              'bg-hover': 'var(--colors-button-secondary-bg-hover)',
             },
           },
           'chip-bg': 'var(--colors-chip-bg)',
@@ -195,15 +203,6 @@ module.exports = {
           theme: {
             'link-header-hover': 'var(--colors-link-header-hover)',
             logo: 'var(--colors-link-header-hover)',
-
-            button: {
-              primary: {
-                'bg-hover': 'var(--colors-button-primary-bg-hover)',
-              },
-              secondary: {
-                'bg-hover': 'var(--colors-button-secondary-bg-hover)',
-              },
-            },
           },
         }),
       },

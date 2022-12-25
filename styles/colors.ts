@@ -6,9 +6,10 @@ const colors = {
   '--colors-grey': '0, 0%, 50%',
   '--colors-grey-dark': '0, 0%, 20%',
   '--colors-grey-darkest': '0, 0%, 13%',
+  '--colors-yellow-light': '47, 100%, 88%',
   '--colors-yellow': '47, 100%, 65%',
   '--colors-yellow-dark': '47, 100%, 40%',
-  '--colors-pink-lightest': '7, 100%, 88%',
+  '--colors-pink-light': '7, 100%, 88%',
   '--colors-pink': '7, 100%, 64%',
   '--colors-pink-dark': '7, 69%, 45%',
 

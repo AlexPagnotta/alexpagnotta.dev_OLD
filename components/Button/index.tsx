@@ -25,48 +25,30 @@ type Props<T extends PolymorphicElement> = {
 
 const StyledButton = styled('button', {
   ...tw`appearance-none select-none cursor-pointer disabled:(cursor-not-allowed opacity-60)`,
-  ...tw`inline-flex justify-center items-center h-44 overflow-hidden isolate active:scale-95`,
+  ...tw`inline-flex justify-center items-center h-44 active:scale-95`,
   willChange: 'transform', // Fix text bluriness on transform
   WebkitTapHighlightColor: 'transparent',
-  transitionProperty: 'transform, background, border',
-  transitionDuration: '0.3s, var(--animation-mode-duration)',
-  transitionTimingFunction: 'var(--animation-mode-function)',
+  transitionProperty: 'transform, background, border, color',
+  transitionDuration: '0.3s',
 
-  '&:before': {
-    ...tw`content-[""] absolute inset-0 z-[-1] opacity-0`,
-    transition: 'opacity 0.5s',
-  },
-
-  '&:focus-visible': {
-    ...tw`ring-0`,
-    '&:before': {
-      ...tw`opacity-100`,
-    },
-  },
+  ...tw`focus-visible:(ring-0 bg-[var(--bg-hover-color)] text-[var(--content-hover-color)]) border-[var(--content-hover-color)]`,
 
   '&:hover': {
-    '&:not(:disabled)': {
-      '&:before': {
-        ...tw`opacity-100`,
-      },
-    },
+    '&:not(:disabled)': tw`bg-[var(--bg-hover-color)] text-[var(--content-hover-color)] border-[var(--content-hover-color)]`,
   },
 
   variants: {
     variant: {
       primary: {
         ...tw`bg-theme-colors-button-primary-bg text-theme-colors-button-primary-content`,
-
-        '&:before': {
-          ...tw`bg-theme-button-primary-bg-hover `,
-        },
+        '--content-hover-color': 'var(--colors-button-primary-content-hover)',
+        '--bg-hover-color': 'var(--colors-button-primary-bg-hover)',
       },
       secondary: {
-        ...tw`bg-theme-colors-button-secondary-bg text-theme-colors-button-secondary-content border-theme-colors-button-secondary-content border-2`,
-
-        '&:before': {
-          ...tw`bg-theme-button-secondary-bg-hover `,
-        },
+        ...tw`bg-theme-colors-button-secondary-bg text-theme-colors-button-secondary-content`,
+        ...tw`border-theme-colors-button-secondary-content border-2`,
+        '--content-hover-color': 'var(--colors-button-secondary-content-hover)',
+        '--bg-hover-color': 'var(--colors-button-secondary-bg-hover)',
       },
     },
     buttonType: {
