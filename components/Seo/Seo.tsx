@@ -1,4 +1,6 @@
-import { NextSeo } from 'next-seo';
+import { ArticleJsonLd, NextSeo } from 'next-seo';
+
+import { defaultSeoData } from './DefaultSeo';
 
 type Props = {
   title?: string;
@@ -19,7 +21,7 @@ const Seo = ({ title, description, route, ...props }: Props) => {
 
   const publishedDate = props.type === 'article' ? new Date(props.publishedDate).toISOString() : undefined;
   const updatedDate =
-    props.type === 'article' && props.updatedDate ? new Date(props.updatedDate).toISOString() : publishedDate;
+    props.type === 'article' && props.updatedDate ? new Date(props.updatedDate).toISOString() : undefined;
 
   return (
     <>
@@ -43,7 +45,24 @@ const Seo = ({ title, description, route, ...props }: Props) => {
           //   images: TODO
         }}
       />
-      {/* TODO: Schema.org data */}
+      <ArticleJsonLd
+        type={props.type === 'article' ? 'Article' : 'BlogPosting'}
+        title={title || defaultSeoData.title}
+        description={description || defaultSeoData.title}
+        authorName={defaultSeoData.author}
+        url={seoUrl || defaultSeoData.url}
+        // TODO
+        images={[]}
+        {...(props.type === 'article'
+          ? {
+              // TODO: : Use custom image or link to big size favicon
+              publisherLogo: '',
+              publisherName: defaultSeoData.author,
+            }
+          : {})}
+        datePublished={publishedDate || new Date().toISOString()}
+        dateModified={updatedDate || publishedDate || new Date().toISOString()}
+      />
     </>
   );
 };

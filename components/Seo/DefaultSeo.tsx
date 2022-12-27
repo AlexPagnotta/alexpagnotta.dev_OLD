@@ -1,16 +1,17 @@
-import { DefaultSeo as NextSeoDefault } from 'next-seo';
+import { ArticleJsonLd, DefaultSeo as NextSeoDefault } from 'next-seo';
 
 export const defaultSeoData = {
   title: 'Title Placeholder',
   description: 'Description Placeholder',
-  url: process.env['NEXT_PUBLIC_URL'],
+  url: process.env['NEXT_PUBLIC_URL'] || '',
   ogType: 'website',
   ogLocale: 'en_IE',
   twitter: '@placeholder',
+  author: 'Alex Pagnotta',
 };
 
 const DefaultSeo = () => {
-  const { title, description, url, ogType, ogLocale, twitter } = defaultSeoData;
+  const { title, description, url, ogType, ogLocale, twitter, author } = defaultSeoData;
 
   return (
     <>
@@ -32,7 +33,17 @@ const DefaultSeo = () => {
           cardType: 'summary_large_image',
         }}
       />
-      {/* TODO: Schema.org data */}
+      <ArticleJsonLd
+        type='BlogPosting'
+        title={title}
+        description={description}
+        authorName={author}
+        url={url || ''}
+        // TODO
+        images={[]}
+        datePublished={new Date().toISOString()}
+        dateModified={new Date().toISOString()}
+      />
     </>
   );
 };
