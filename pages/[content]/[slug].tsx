@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
 import MdxContent from '/components/Mdx';
+import Seo from '/components/Seo';
 import ContentLayout from '/layouts/ContentLayout';
 import { contentTypePath, getAllContentSlugs, getContentBySlug } from '/lib/mdx';
 import { ContentType, Post, Project, Snippet } from '/types/content';
@@ -17,19 +18,30 @@ const Content = ({ frontmatter, source }: Props) => {
   }
 
   return (
-    <ContentLayout
-      title={frontmatter.title}
-      description={
-        frontmatter.type === ContentType.PROJECT || frontmatter.type === ContentType.SNIPPET
-          ? frontmatter.subtitle
-          : undefined
-      }
-      readingTime={frontmatter.type === ContentType.POST ? frontmatter.readingTime : undefined}
-      tags={frontmatter.tags}
-      publishDate={frontmatter.type === ContentType.POST ? frontmatter.date : undefined}
-    >
-      <MdxContent source={source} />
-    </ContentLayout>
+    <>
+      <Seo
+        title={frontmatter.title}
+        description={frontmatter.subtitle}
+        // image={} TODO
+        type='article'
+        publishedDate={frontmatter.date}
+        updatedDate={frontmatter.type === ContentType.POST ? frontmatter.updated : undefined}
+        route={frontmatter.extendedSlug}
+      />
+      <ContentLayout
+        title={frontmatter.title}
+        description={
+          frontmatter.type === ContentType.PROJECT || frontmatter.type === ContentType.SNIPPET
+            ? frontmatter.subtitle
+            : undefined
+        }
+        readingTime={frontmatter.type === ContentType.POST ? frontmatter.readingTime : undefined}
+        tags={frontmatter.tags}
+        publishDate={frontmatter.type === ContentType.POST ? frontmatter.date : undefined}
+      >
+        <MdxContent source={source} />
+      </ContentLayout>
+    </>
   );
 };
 

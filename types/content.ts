@@ -8,6 +8,7 @@ export enum ContentType {
 
 type BaseFrontmatter = {
   title: string;
+  subtitle: string;
   excerpt?: string;
   date: string;
   tags: string[];
@@ -17,6 +18,7 @@ type BaseFrontmatter = {
 
 export type PostFrontmatter = BaseFrontmatter & {
   type: ContentType.POST;
+  updated?: string;
   readingTime?: string;
 };
 
@@ -27,7 +29,6 @@ export type Post = {
 
 export type ProjectFrontmatter = BaseFrontmatter & {
   type: ContentType.PROJECT;
-  subtitle?: string;
 };
 
 export type Project = {
@@ -37,7 +38,6 @@ export type Project = {
 
 export type SnippetFrontmatter = BaseFrontmatter & {
   type: ContentType.SNIPPET;
-  subtitle?: string;
 };
 
 export type Snippet = {

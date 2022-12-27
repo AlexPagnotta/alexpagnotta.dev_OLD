@@ -5,6 +5,7 @@ import globalStyles from '../styles/globalStyles';
 
 import '../styles/fonts.css';
 import { ThemeProvider } from '/contexts/Theme';
+import { DefaultSeo } from '/components/Seo';
 
 const App = ({ Component, pageProps }: AppProps) => {
   globalStyles();
@@ -15,6 +16,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel='preload' href='/fonts/FiraCode-Variable.ttf' as='font' type='font/ttf' crossOrigin='anonymous' />
       </NextHead>
       <ThemeProvider>
+        <DefaultSeo />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
