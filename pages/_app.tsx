@@ -12,6 +12,17 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <NextHead>
+        {/* Favicon */}
+        <link rel='icon' href='/static/favicons/favicon.svg' type='image/svg+xml' />
+        <link rel='apple-touch-icon' sizes='180x180' href='/static/favicons/apple-touch-icon.png' />
+        <link rel='icon' type='image/png' sizes='32x32' href='/static/favicons/favicon-32x32.png' />
+        <link rel='icon' type='image/png' sizes='16x16' href='/static/favicons/favicon-16x16.png' />
+        <link rel='icon' href='/static/favicons/favicon.ico' sizes='any' />
+        <link rel='manifest' href='/static/favicons/site.webmanifest' />
+        <meta name='theme-color' media='(prefers-color-scheme: light)' content='hsl(0, 0%, 100%)' />
+        <meta name='theme-color' media='(prefers-color-scheme: dark)' content='hsl(0, 0%, 8%)' />
+
+        {/* Fonts */}
         <link rel='preload' href='/fonts/Inter-Variable.ttf' as='font' type='font/ttf' crossOrigin='anonymous' />
         <link rel='preload' href='/fonts/FiraCode-Variable.ttf' as='font' type='font/ttf' crossOrigin='anonymous' />
       </NextHead>
