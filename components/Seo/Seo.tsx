@@ -2,26 +2,30 @@ import { ArticleJsonLd, NextSeo } from 'next-seo';
 
 import { defaultSeoData } from './DefaultSeo';
 
+import { generateShareImageUrl } from '/utils/shareImages';
+
 type Props = {
   title?: string;
   description?: string;
   route?: string;
-  //   image?: string; TODO
+  shareImageTitle?: string;
 } & (
   | {
-      type: 'article';
+      type: 'content';
       publishedDate: string;
       updatedDate?: string;
     }
-  | { type: 'website' }
+  | { type: 'page' }
 );
 
-const Seo = ({ title, description, route, ...props }: Props) => {
+const Seo = ({ title, description, route, shareImageTitle, ...props }: Props) => {
   const seoUrl = route ? `${process.env['NEXT_PUBLIC_URL']}/${route}` : undefined;
 
-  const publishedDate = props.type === 'article' ? new Date(props.publishedDate).toISOString() : undefined;
+  const publishedDate = props.type === 'content' ? new Date(props.publishedDate).toISOString() : undefined;
   const updatedDate =
-    props.type === 'article' && props.updatedDate ? new Date(props.updatedDate).toISOString() : undefined;
+    props.type === 'content' && props.updatedDate ? new Date(props.updatedDate).toISOString() : undefined;
+
+  const shareImageUrl = generateShareImageUrl(shareImageTitle || title);
 
   return (
     <>
@@ -30,33 +34,38 @@ const Seo = ({ title, description, route, ...props }: Props) => {
         description={description}
         canonical={seoUrl}
         openGraph={{
-          type: props.type,
-          ...(props.type === 'article'
+          ...(props.type === 'content'
             ? {
+                type: 'article',
                 article: {
                   publishedTime: publishedDate,
                   modifiedTime: updatedDate || publishedDate,
                 },
               }
-            : {}),
+            : {
+                type: 'website',
+              }),
           title,
           description,
           url: seoUrl,
-          //   images: TODO
+          images: [
+            {
+              url: shareImageUrl,
+              alt: title,
+            },
+          ],
         }}
       />
       <ArticleJsonLd
-        type={props.type === 'article' ? 'Article' : 'BlogPosting'}
+        type={props.type === 'content' ? 'Article' : 'BlogPosting'}
         title={title || defaultSeoData.title}
         description={description || defaultSeoData.title}
         authorName={defaultSeoData.author}
         url={seoUrl || defaultSeoData.url}
-        // TODO
-        images={[]}
-        {...(props.type === 'article'
+        images={[shareImageUrl]}
+        {...(props.type === 'content'
           ? {
-              // TODO: : Use custom image or link to big size favicon
-              publisherLogo: '',
+              publisherLogo: '/static/favicons/android-chrome-512x512.png',
               publisherName: defaultSeoData.author,
             }
           : {})}

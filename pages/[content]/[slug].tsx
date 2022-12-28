@@ -22,8 +22,8 @@ const Content = ({ frontmatter, source }: Props) => {
       <Seo
         title={frontmatter.title}
         description={frontmatter.subtitle}
-        // image={} TODO
-        type='article'
+        shareImageTitle={frontmatter.shareImageTitle}
+        type='content'
         publishedDate={frontmatter.date}
         updatedDate={frontmatter.type === ContentType.POST ? frontmatter.updated : undefined}
         route={frontmatter.extendedSlug}

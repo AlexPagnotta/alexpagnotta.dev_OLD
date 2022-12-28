@@ -1,9 +1,16 @@
 import { ArticleJsonLd, DefaultSeo as NextSeoDefault } from 'next-seo';
 
+import { generateShareImageUrl } from '/utils/shareImages';
+
 export const defaultSeoData = {
   title: 'Title Placeholder',
   description: 'Description Placeholder',
   url: process.env['NEXT_PUBLIC_URL'] || '',
+  shareImage: {
+    url: generateShareImageUrl(),
+    width: 1200,
+    height: 600,
+  },
   ogType: 'website',
   ogLocale: 'en_IE',
   twitter: '@placeholder',
@@ -11,7 +18,7 @@ export const defaultSeoData = {
 };
 
 const DefaultSeo = () => {
-  const { title, description, url, ogType, ogLocale, twitter, author } = defaultSeoData;
+  const { title, description, url, shareImage, ogType, ogLocale, twitter, author } = defaultSeoData;
 
   return (
     <>
@@ -25,7 +32,14 @@ const DefaultSeo = () => {
           type: ogType,
           locale: ogLocale,
           url: url,
-          // images: [], TODO
+          images: [
+            {
+              url: shareImage.url,
+              alt: title,
+              width: shareImage.width,
+              height: shareImage.height,
+            },
+          ],
         }}
         twitter={{
           handle: twitter,
@@ -39,8 +53,7 @@ const DefaultSeo = () => {
         description={description}
         authorName={author}
         url={url || ''}
-        // TODO
-        images={[]}
+        images={[shareImage.url]}
         datePublished={new Date().toISOString()}
         dateModified={new Date().toISOString()}
       />

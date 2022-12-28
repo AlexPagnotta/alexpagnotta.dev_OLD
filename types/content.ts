@@ -13,6 +13,7 @@ type BaseFrontmatter = {
   date: string;
   tags: string[];
   slug: string;
+  shareImageTitle?: string;
   extendedSlug: string;
 };
 
