@@ -26,13 +26,13 @@ export default class Document extends NextDocument {
           <script
             key='theme-script'
             dangerouslySetInnerHTML={{
-              __html: `(function() { try {
-        var localStorageTheme = localStorage.getItem('theme');
-        var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-        if (!localStorageTheme && prefersDarkMode) document.body.classList.add('theme-dark');
-        if (!localStorageTheme) return
-        document.body.classList.add('theme-' + localStorageTheme);
-      } catch (e) {} })();`,
+              __html: `(function () {try {
+                const localStorageTheme = localStorage.getItem('theme');
+                const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+                if (localStorageTheme) return document.body.classList.add('theme-' + localStorageTheme);
+                if (prefersDarkMode) return document.body.classList.add('theme-dark');
+                else return document.body.classList.add('theme-light');
+                } catch (e) {}})();`,
             }}
           />
           <Main />
