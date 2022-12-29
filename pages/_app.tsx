@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
 import NextHead from 'next/head';
+import { Analytics } from '@vercel/analytics/react';
 
 import globalStyles from '../styles/globalStyles';
 
@@ -29,6 +30,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider>
         <DefaultSeo />
         <Component {...pageProps} />
+        <Analytics />
       </ThemeProvider>
     </>
   );

@@ -15,6 +15,7 @@
   "dependencies": {
     "@codesandbox/sandpack-react": "^1.17.2",
     "@stitches/react": "^1.2.8",
+    "@vercel/analytics": "^0.1.6",
     "@vercel/og": "^0.0.21",
     "date-fns": "^2.29.3",
     "gray-matter": "^4.0.3",
