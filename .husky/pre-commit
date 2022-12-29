@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+yarn lint || (
+    echo 'husky error - lint check failed';
+    false;
+)
+
+yarn typecheck || (
+    echo 'husky error - typescript check failed';
+    false;
+)
+
+
