@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Title Placeholder]]></title>
+        <description><![CDATA[Description Placeholder]]></description>
+        <link>https://alexpagnotta.com</link>
+        <image>
+            <url>http://localhost:3000/api/share-image</url>
+            <title>Title Placeholder</title>
+            <link>https://alexpagnotta.com</link>
+        </image>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Thu, 29 Dec 2022 07:49:05 GMT</lastBuildDate>
+        <atom:link href="https://alexpagnotta.com/rss.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Thu, 29 Dec 2022 07:49:05 GMT</pubDate>
+        <language><![CDATA[en]]></language>
+        <item>
+            <title><![CDATA[Test Title]]></title>
+            <description><![CDATA[Test Subtitle]]></description>
+            <link>posts/test</link>
+            <guid isPermaLink="true">posts/test</guid>
+            <dc:creator><![CDATA[Alex Pagnotta]]></dc:creator>
+            <pubDate>Tue, 20 Apr 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Test Title]]></title>
+            <description><![CDATA[Test Subtitle]]></description>
+            <link>projects/test</link>
+            <guid isPermaLink="true">projects/test</guid>
+            <dc:creator><![CDATA[Alex Pagnotta]]></dc:creator>
+            <pubDate>Tue, 20 Apr 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Test Title]]></title>
+            <description><![CDATA[Test Subtitle]]></description>
+            <link>snippets/test</link>
+            <guid isPermaLink="true">snippets/test</guid>
+            <dc:creator><![CDATA[Alex Pagnotta]]></dc:creator>
+            <pubDate>Tue, 20 Apr 2021 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

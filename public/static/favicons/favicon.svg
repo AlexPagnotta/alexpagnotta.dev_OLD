@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" fill="none" viewBox="0 0 512 512">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      rect {
+        fill: url(#dark-fill);
+      }
+    }
+  </style>
+  <rect width="512" height="512" fill="url(#light-fill)" rx="256" />
+  <defs>
+    <linearGradient id="light-fill" x1="0" x2="530.667" y1="256" y2="256" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF5942" />
+      <stop offset="1" stop-color="#FFB0A6" />
+    </linearGradient>
+    <linearGradient id="dark-fill" x1="0" x2="530.667" y1="256" y2="256" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD84D" />
+      <stop offset="1" stop-color="#FF9446" />
+    </linearGradient>
+  </defs>
+</svg>
