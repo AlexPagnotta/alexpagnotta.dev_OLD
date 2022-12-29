@@ -3,8 +3,8 @@ import { ArticleJsonLd, DefaultSeo as NextSeoDefault } from 'next-seo';
 import { generateShareImageUrl } from '/utils/shareImages';
 
 export const defaultSeoData = {
-  title: 'Title Placeholder',
-  description: 'Description Placeholder',
+  title: 'TODO: Placeholder',
+  description: 'TODO: Placeholder',
   url: process.env['NEXT_PUBLIC_URL'] || '',
   shareImage: {
     url: generateShareImageUrl(),
@@ -13,7 +13,7 @@ export const defaultSeoData = {
   },
   ogType: 'website',
   ogLocale: 'en_IE',
-  twitter: '@placeholder',
+  twitter: 'TODO: @Placeholder',
   author: 'Alex Pagnotta',
 };
 
