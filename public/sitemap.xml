@@ -8,18 +8,22 @@
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
 >
   <url>
-    <loc>https://alexpagnotta.com/</loc>
+    <loc>https://alexpagnotta.com</loc>
   </url>
 
   <url>
-    <loc>https://alexpagnotta.com/posts/test/</loc>
+    <loc>https://alexpagnotta.com/rss</loc>
   </url>
 
   <url>
-    <loc>https://alexpagnotta.com/projects/test/</loc>
+    <loc>https://alexpagnotta.com/posts/test</loc>
   </url>
 
   <url>
-    <loc>https://alexpagnotta.com/snippets/test/</loc>
+    <loc>https://alexpagnotta.com/projects/test</loc>
+  </url>
+
+  <url>
+    <loc>https://alexpagnotta.com/snippets/test</loc>
   </url>
 </urlset>

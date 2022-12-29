@@ -32,7 +32,7 @@ const generateSitemap = async () => {
 
           return `
             <url>
-                <loc>${`https://alexpagnotta.com${route}/`}</loc>
+                <loc>${`https://alexpagnotta.com${route}`}</loc>
             </url>
           `;
         })

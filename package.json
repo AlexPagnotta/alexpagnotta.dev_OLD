@@ -25,12 +25,14 @@
     "reading-time": "^1.5.0",
     "rehype-pretty-code": "^0.5.1",
     "rehype-slug": "^5.1.0",
+    "rss": "^1.2.2",
     "shiki": "^0.11.1"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
     "@types/node": "18.8.3",
     "@types/react": "18.0.21",
+    "@types/rss": "^0.0.29",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-twin": "^1.0.2",
