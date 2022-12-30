@@ -3,7 +3,7 @@ import { ArticleJsonLd, DefaultSeo as NextSeoDefault } from 'next-seo';
 import siteConfig from '/config/site.mjs';
 
 const DefaultSeo = () => {
-  const { title, description, url, shareImage, twitterUsername, author } = siteConfig;
+  const { title, description, url, shareImage, twitter, author } = siteConfig;
 
   return (
     <>
@@ -27,8 +27,8 @@ const DefaultSeo = () => {
           ],
         }}
         twitter={{
-          handle: twitterUsername,
-          site: twitterUsername,
+          handle: twitter.username,
+          site: twitter.username,
           cardType: 'summary_large_image',
         }}
       />

@@ -49,7 +49,7 @@ const StyledContentItemAnchor = styled('a', {
 const Home = ({ contents }: Props) => (
   <Layout>
     <div tw='flex flex-col gap-80-px md:gap-128-px pt-56-px md:pt-128-px'>
-      <Container>
+      <Container as='section'>
         <Hero />
       </Container>
 
@@ -69,8 +69,7 @@ const Home = ({ contents }: Props) => (
                         <H3 tw='mb-8'>{content.title}</H3>
                         {content.excerpt && (
                           <Text as='p' size='body-3'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
+                            {content.excerpt}
                           </Text>
                         )}
                       </div>

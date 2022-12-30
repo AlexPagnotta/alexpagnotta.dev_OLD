@@ -59,7 +59,7 @@ const StyledAnchor = styled('a', {
         },
       },
       default: {
-        ...tw`text-theme-colors-link border-b-2 border-b-transparent`,
+        ...tw`text-theme-colors-link font-semibold border-b-2 border-b-transparent`,
         ...tw`hover:border-current focus:(ring-0 border-current)`,
         transition: 'border-color 0.3s',
       },

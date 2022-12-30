@@ -7,6 +7,8 @@ import LinkedinIcon from './IconList/linkedin.svg';
 import MoonIcon from './IconList/moon.svg';
 import SunIcon from './IconList/sun.svg';
 import TwitterIcon from './IconList/twitter.svg';
+import DocumentIcon from './IconList/document.svg';
+import RssIcon from './IconList/rss.svg';
 
 import { styled } from '/stitches.config';
 
@@ -21,6 +23,8 @@ const iconsDict = {
   moon: MoonIcon,
   sun: SunIcon,
   twitter: TwitterIcon,
+  document: DocumentIcon,
+  rss: RssIcon,
 };
 
 const StyledIcon = styled('svg', {

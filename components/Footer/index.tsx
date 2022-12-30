@@ -3,34 +3,31 @@ import Button from '../Button';
 import Container from '../Container';
 import Text, { H2 } from '../Text';
 
+import siteConfig from '/config/site.mjs';
+
+export const footerId = 'footer-section';
+
 const Footer = () => {
   return (
-    <Container as='footer' tw='py-80-px md:py-128-px'>
+    <Container id={footerId} as='footer' tw='py-80-px md:py-128-px'>
       <H2>Stay in touch 👈</H2>
-      {/* TODO: Placeholder */}
       <Text size='body-3' tw='block mt-24'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do you can an email at{' '}
-        <Anchor href='mailto:ap.alex.pagnotta@gmail.com'>ap.alex.pagnotta@gmail.com</Anchor>.
-        <br /> <br />
-        Ornare quam viverra orci sagittis eu volutpat odio. Suspendisse interdum consectetur libero id sed do eiusmod
-        tempor incididunt.
+        <span tw='block mb-20'>
+          Do you want to get in touch? Write me at{' '}
+          <Anchor href='mailto:ap.alex.pagnotta@gmail.com'>ap.alex.pagnotta@gmail.com</Anchor>.
+        </span>
+        <span>
+          You can also find me on social networks, or check my Github account if you want to have a look at the source
+          code of this website.
+        </span>
       </Text>
-      <div tw='flex gap-48-px mt-42'>
+      <div tw='flex gap-32-px md:(gap-42-px) mt-42'>
         <Button
           icon='github'
           aria-label='Go to Github'
           title='Go to Github'
           as='a'
-          href='https://wwww.placeholder.com' // TODO: Placeholder
-          target='_blank'
-          rel='noopener noreferrer'
-        />
-        <Button
-          icon='linkedin'
-          aria-label='Go to Linkedin'
-          title='Go to Linkedin'
-          as='a'
-          href='https://wwww.placeholder.com' // TODO: Placeholder
+          href={siteConfig.github}
           target='_blank'
           rel='noopener noreferrer'
         />
@@ -39,8 +36,27 @@ const Footer = () => {
           aria-label='Go to Twitter'
           title='Go to Twitter'
           as='a'
-          href='https://wwww.placeholder.com' // TODO: Placeholder
+          href={siteConfig.twitter.url}
           type='submit'
+          target='_blank'
+          rel='noopener noreferrer'
+        />
+        <Button
+          icon='document'
+          aria-label='Download my resume'
+          title='Download my resume'
+          as='a'
+          href={siteConfig.resumeUrl}
+          type='submit'
+          target='_blank'
+          rel='noopener noreferrer'
+        />
+        <Button
+          icon='rss'
+          aria-label='Open the RSS feed'
+          title='Open the RSS feed'
+          as='a'
+          href={siteConfig.rss.url}
           target='_blank'
           rel='noopener noreferrer'
         />

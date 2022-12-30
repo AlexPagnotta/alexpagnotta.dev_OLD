@@ -1,5 +1,7 @@
 import tw from 'twin.macro';
 
+import Anchor from '../Anchor';
+
 import Text, { Strong } from '/components/Text';
 import { keyframes, styled } from '/stitches.config';
 
@@ -37,10 +39,14 @@ const Hero = () => {
   return (
     <div>
       <Text size='body-5' as='h1'>
-        I&apos;m <Strong>Alex Pagnotta</Strong>, a frontend developer from Italy <StyledEmoticon>🤌</StyledEmoticon>
-        <br />
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.
+        <span tw='block mb-20'>
+          I&apos;m <Strong>Alex Pagnotta</Strong>, a frontend developer from Italy <StyledEmoticon>🤌</StyledEmoticon>
+          <br />
+          This is my blog, where I share posts, snippets and generally anything I find interesting.
+        </span>
+        <span>
+          Currently working at <Anchor href='https://wild.as/'>Wild</Anchor> building wonderful websites.
+        </span>
       </Text>
     </div>
   );

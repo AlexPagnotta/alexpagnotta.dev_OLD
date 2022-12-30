@@ -7,6 +7,7 @@ import globalStyles from '../styles/globalStyles';
 import '../styles/fonts.css';
 import { ThemeProvider } from '/contexts/Theme';
 import { DefaultSeo } from '/components/Seo';
+import siteConfig from '/config/site.mjs';
 
 const App = ({ Component, pageProps }: AppProps) => {
   globalStyles();
@@ -22,6 +23,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel='manifest' href='/static/favicons/site.webmanifest' />
         <meta name='theme-color' media='(prefers-color-scheme: light)' content='hsl(0, 0%, 100%)' />
         <meta name='theme-color' media='(prefers-color-scheme: dark)' content='hsl(0, 0%, 8%)' />
+
+        {/* RSS */}
+        <link rel='alternate' type='application/rss+xml' href={siteConfig.rss.urlExtended} title={siteConfig.title} />
 
         {/* Fonts */}
         <link rel='preload' href='/fonts/Inter-Variable.ttf' as='font' type='font/ttf' crossOrigin='anonymous' />

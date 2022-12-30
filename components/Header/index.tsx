@@ -3,8 +3,9 @@ import tw from 'twin.macro';
 
 import Anchor from '../Anchor';
 import Container from '../Container';
-import Text from '../Text';
+import { footerId } from '../Footer';
 import Switch from '../Switch';
+import Text from '../Text';
 
 import Logo from './Logo';
 
@@ -40,7 +41,7 @@ const Header = () => {
       </Link>
       <div tw='flex items-center gap-24-px md:gap-36-px'>
         <Text size='body-3'>
-          <Anchor href='/test' variant='header'>
+          <Anchor href={`#${footerId}`} variant='header'>
             Contact Me
           </Anchor>
         </Text>
