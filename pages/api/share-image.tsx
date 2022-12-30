@@ -2,6 +2,8 @@ import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 import { CSSProperties } from 'react';
 
+import siteConfig from '/config/site.mjs';
+
 export const config = {
   runtime: 'experimental-edge',
 };
@@ -69,7 +71,7 @@ const generateShareImage = async (req: NextRequest) => {
               paddingLeft: isContent ? '96px' : '0px',
             }}
           >
-            <span>{isContent ? 'alexpagnotta.com' : "Ehy, I'm"}</span>
+            <span>{isContent ? siteConfig.siteName : "Ehy, I'm"}</span>
             <span
               style={
                 {

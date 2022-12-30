@@ -17,6 +17,8 @@
 .DS_Store
 *.pem
 tsconfig.tsbuildinfo
+public/rss.xml
+public/sitemap.xml
 
 # Debug
 npm-debug.log*

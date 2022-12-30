@@ -1,5 +1,5 @@
 {
-  "name": "alexpagnotta.com",
+  "name": "alexpagnotta.dev",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "typecheck": "tsc --noEmit",
-    "generate:sitemap": "node ./scripts/generate-sitemap.mjs",
+    "generate:sitemap": "env-cmd node ./scripts/generate-sitemap.mjs",
     "prebuild": "yarn generate:sitemap",
     "prepare": "husky install"
   },
@@ -39,6 +39,7 @@
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-twin": "^1.0.2",
     "chalk": "^5.2.0",
+    "env-cmd": "^10.1.0",
     "eslint": "8.25.0",
     "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "^8.5.0",

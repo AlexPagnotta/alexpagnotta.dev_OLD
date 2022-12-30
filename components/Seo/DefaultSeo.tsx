@@ -1,24 +1,9 @@
 import { ArticleJsonLd, DefaultSeo as NextSeoDefault } from 'next-seo';
 
-import { generateShareImageUrl } from '/utils/shareImages';
-
-export const defaultSeoData = {
-  title: 'TODO: Placeholder',
-  description: 'TODO: Placeholder',
-  url: process.env['NEXT_PUBLIC_URL'] || '',
-  shareImage: {
-    url: generateShareImageUrl(),
-    width: 1200,
-    height: 600,
-  },
-  ogType: 'website',
-  ogLocale: 'en_IE',
-  twitter: 'TODO: @Placeholder',
-  author: 'Alex Pagnotta',
-};
+import siteConfig from '/config/site.mjs';
 
 const DefaultSeo = () => {
-  const { title, description, url, shareImage, ogType, ogLocale, twitter, author } = defaultSeoData;
+  const { title, description, url, shareImage, twitterUsername, author } = siteConfig;
 
   return (
     <>
@@ -29,8 +14,8 @@ const DefaultSeo = () => {
         openGraph={{
           title: title,
           description: description,
-          type: ogType,
-          locale: ogLocale,
+          type: 'website',
+          locale: 'en_IE',
           url: url,
           images: [
             {
@@ -42,8 +27,8 @@ const DefaultSeo = () => {
           ],
         }}
         twitter={{
-          handle: twitter,
-          site: twitter,
+          handle: twitterUsername,
+          site: twitterUsername,
           cardType: 'summary_large_image',
         }}
       />

@@ -5,6 +5,8 @@ import chalk from 'chalk';
 import { globby } from 'globby';
 import prettier from 'prettier';
 
+import siteConfig from '../config/site.mjs';
+
 const generateSitemap = async () => {
   console.info(chalk.cyan('info'), ` - Generating sitemap`);
 
@@ -32,7 +34,7 @@ const generateSitemap = async () => {
 
           return `
             <url>
-                <loc>${`https://alexpagnotta.com${route}`}</loc>
+                <loc>${`${siteConfig.url}${route}`}</loc>
             </url>
           `;
         })

@@ -1,7 +1,6 @@
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 
-import { defaultSeoData } from './DefaultSeo';
-
+import siteConfig from '/config/site.mjs';
 import { generateShareImageUrl } from '/utils/shareImages';
 
 type Props = {
@@ -58,15 +57,15 @@ const Seo = ({ title, description, route, shareImageTitle, ...props }: Props) =>
       />
       <ArticleJsonLd
         type={props.type === 'content' ? 'Article' : 'BlogPosting'}
-        title={title || defaultSeoData.title}
-        description={description || defaultSeoData.title}
-        authorName={defaultSeoData.author}
-        url={seoUrl || defaultSeoData.url}
+        title={title || siteConfig.title}
+        description={description || siteConfig.title}
+        authorName={siteConfig.author}
+        url={(seoUrl || siteConfig.url) as string}
         images={[shareImageUrl]}
         {...(props.type === 'content'
           ? {
               publisherLogo: '/static/favicons/android-chrome-512x512.png',
-              publisherName: defaultSeoData.author,
+              publisherName: siteConfig.author,
             }
           : {})}
         datePublished={publishedDate || new Date().toISOString()}

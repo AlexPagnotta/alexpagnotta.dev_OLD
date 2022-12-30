@@ -5,16 +5,16 @@ import chalk from 'chalk';
 import RSS from 'rss';
 
 import { PostFrontmatter, ProjectFrontmatter, SnippetFrontmatter } from '/types/content';
-import { defaultSeoData } from '/components/Seo/DefaultSeo';
+import siteConfig from '/config/site.mjs';
 
 export const generateRssFeed = async (contents: (PostFrontmatter | ProjectFrontmatter | SnippetFrontmatter)[]) => {
   try {
     const feed = new RSS({
-      title: defaultSeoData.title,
-      description: defaultSeoData.description,
-      site_url: 'https://alexpagnotta.com',
-      feed_url: `https://alexpagnotta.com/rss.xml`,
-      image_url: defaultSeoData.shareImage.url,
+      title: siteConfig.title,
+      description: siteConfig.description,
+      site_url: `${siteConfig.url}`,
+      feed_url: `${siteConfig.url}/rss.xml`,
+      image_url: siteConfig.shareImage.url,
       pubDate: new Date(),
       language: 'en',
     });
@@ -25,7 +25,7 @@ export const generateRssFeed = async (contents: (PostFrontmatter | ProjectFrontm
         description: content.subtitle,
         url: content.extendedSlug,
         date: content.date,
-        author: defaultSeoData.author,
+        author: siteConfig.author,
       });
     });
 
