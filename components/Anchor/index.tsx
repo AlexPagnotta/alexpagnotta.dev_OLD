@@ -1,4 +1,5 @@
 import { VariantProps } from '@stitches/react';
+import React from 'react';
 import tw from 'twin.macro';
 
 import { styled } from '/stitches.config';
@@ -70,14 +71,16 @@ const StyledAnchor = styled('a', {
   },
 });
 
-const Anchor = ({ variant, children, ...rest }: Props) => {
+const Anchor = React.forwardRef(({ variant, children, ...rest }: Props, ref: React.Ref<HTMLAnchorElement>) => {
   const isHeaderVariant = variant === 'header';
 
   return (
-    <StyledAnchor variant={variant} {...rest} {...(isHeaderVariant ? { 'data-content': children } : {})}>
+    <StyledAnchor variant={variant} ref={ref} {...rest} {...(isHeaderVariant ? { 'data-content': children } : {})}>
       {isHeaderVariant ? <span>{children}</span> : children}
     </StyledAnchor>
   );
-};
+});
+
+Anchor.displayName = 'Anchor';
 
 export default Anchor;

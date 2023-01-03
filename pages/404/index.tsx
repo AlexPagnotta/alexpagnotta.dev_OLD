@@ -7,6 +7,7 @@ import Background from './bg.svg';
 import { styled } from '/stitches.config';
 
 import tw from 'twin.macro';
+import Link from 'next/link';
 
 const StyledBackground = styled(Background, {
   ...tw`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-640-px md:w-960-px opacity-10`,
@@ -22,9 +23,11 @@ const NotFound = () => (
       <Text as='p' size='body-3' tw='mb-32'>
         Sorry, we couldn&apos;t find the page you were looking for...
       </Text>
-      <Button as='a' href='/' variant='secondary'>
-        Back to Home
-      </Button>
+      <Link href='/' passHref>
+        <Button as='a' variant='secondary'>
+          Back to Home
+        </Button>
+      </Link>
     </Container>
   </div>
 );

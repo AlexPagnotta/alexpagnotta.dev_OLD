@@ -1,5 +1,5 @@
 import { VariantProps } from '@stitches/react';
-import React from 'react';
+import React, { ComponentPropsWithRef } from 'react';
 import tw from 'twin.macro';
 
 import Icon, { Props as IconProps } from '../Icon';
@@ -7,6 +7,8 @@ import Icon, { Props as IconProps } from '../Icon';
 import { styled } from '/stitches.config';
 
 type PolymorphicElement = 'a' | 'button';
+
+type PolymorphicRef<T extends PolymorphicElement> = ComponentPropsWithRef<T>['ref'];
 
 type Props<T extends PolymorphicElement> = {
   as?: T;
@@ -68,7 +70,7 @@ const StyledButton = styled('button', {
 
 const StyledIcon = styled(Icon, { ...tw`h-24 flex-shrink-0 pointer-events-none` });
 
-const Button = <T extends PolymorphicElement = 'button'>(props: Props<T>) => {
+const Button = React.forwardRef(<T extends PolymorphicElement = 'button'>(props: Props<T>, ref: PolymorphicRef<T>) => {
   // Props destructured to get the "rest" props
   const { icon, iconStart, iconEnd, ...rest } = props;
 
@@ -76,7 +78,7 @@ const Button = <T extends PolymorphicElement = 'button'>(props: Props<T>) => {
     props.children;
   }
   return (
-    <StyledButton buttonType={props.icon ? 'icon' : 'default'} {...rest}>
+    <StyledButton buttonType={props.icon ? 'icon' : 'default'} ref={ref} {...rest}>
       {props.iconStart || props.iconEnd ? (
         <>
           {props.iconStart && <StyledIcon name={props.iconStart} aria-hidden />}
@@ -90,6 +92,10 @@ const Button = <T extends PolymorphicElement = 'button'>(props: Props<T>) => {
       )}
     </StyledButton>
   );
-};
+});
 
-export default Button;
+Button.displayName = 'Button';
+
+export default Button as <T extends PolymorphicElement = 'button'>(
+  props: Props<T> & { ref?: PolymorphicRef<T> }
+) => JSX.Element;
