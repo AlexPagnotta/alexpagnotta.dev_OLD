@@ -2,6 +2,9 @@ import shiki from '../shiki';
 
 const themeDark = {
   '.theme-dark': {
+    // Used for the 'theme-color' attribute
+    '--colors-theme-color': 'hsl(var(--colors-black))',
+
     '--colors-body': 'hsl(var(--colors-black))',
     '--colors-text-primary': 'hsl(var(--colors-white))',
     '--colors-text-secondary': 'hsl(var(--colors-grey))',

@@ -17,20 +17,25 @@ const DefaultTheme = Theme.LIGHT;
 
 export const LocalStorageKey = 'theme';
 
-const ThemeMode = {
+const ThemeMode: Record<Theme, 'light' | 'dark'> = {
   [Theme.LIGHT]: 'light',
   [Theme.DARK]: 'dark',
   // [Theme.RED]: 'dark'
-} as const;
+};
 
 const ThemeContext = React.createContext<ContextState | undefined>(undefined);
 
 const prefersDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-const updateThemeClass = (prevTheme: Theme, nextTheme: Theme) => {
+const updateThemeProperties = (prevTheme: Theme, nextTheme: Theme) => {
   document.body.classList.remove('theme-' + prevTheme);
   document.body.classList.add('theme-' + nextTheme);
   document.documentElement.style.setProperty('color-scheme', ThemeMode[nextTheme]);
+
+  const themeColorAttr = document.querySelector('meta[name="theme-color"]');
+  const themeColorCSSVar = getComputedStyle(document.body).getPropertyValue('--colors-theme-color');
+
+  if (themeColorAttr && themeColorCSSVar) themeColorAttr.setAttribute('content', themeColorCSSVar);
 };
 
 const updateThemeLocalStorage = (theme: Theme) => {
@@ -43,7 +48,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const setTheme = React.useCallback(
     (value: Theme, updateLocalStorage = true) => {
       dispatchTheme((prevTheme) => {
-        updateThemeClass(prevTheme, value);
+        updateThemeProperties(prevTheme, value);
 
         if (updateLocalStorage) updateThemeLocalStorage(value);
         return value;
@@ -56,7 +61,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     dispatchTheme((prevTheme) => {
       const nextTheme = prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
 
-      updateThemeClass(prevTheme, nextTheme);
+      updateThemeProperties(prevTheme, nextTheme);
       updateThemeLocalStorage(nextTheme);
       return nextTheme;
     });
@@ -77,7 +82,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
         const nextTheme = e.matches ? Theme.DARK : Theme.LIGHT;
 
-        updateThemeClass(prevTheme, nextTheme);
+        updateThemeProperties(prevTheme, nextTheme);
         updateThemeLocalStorage(nextTheme);
         return nextTheme;
       });

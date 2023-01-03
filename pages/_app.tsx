@@ -21,8 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel='icon' type='image/png' sizes='16x16' href='/static/favicons/favicon-16x16.png' />
         <link rel='icon' href='/static/favicons/favicon.ico' sizes='any' />
         <link rel='manifest' href='/static/favicons/site.webmanifest' />
-        <meta name='theme-color' media='(prefers-color-scheme: light)' content='hsl(0, 0%, 100%)' />
-        <meta name='theme-color' media='(prefers-color-scheme: dark)' content='hsl(0, 0%, 8%)' />
+        <meta name='theme-color' content='hsl(0, 0%, 100%)' />
 
         {/* RSS */}
         <link rel='alternate' type='application/rss+xml' href={siteConfig.rss.urlExtended} title={siteConfig.title} />

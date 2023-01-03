@@ -2,6 +2,9 @@ import shiki from '../shiki';
 
 const themeLight = {
   '.theme-light': {
+    // Used for the 'theme-color' attribute
+    '--colors-theme-color': 'hsl(var(--colors-grey-lightest))',
+
     '--colors-body': 'hsl(var(--colors-white))',
     '--colors-text-primary': 'hsl(var(--colors-black))',
     '--colors-text-secondary': 'hsl(var(--colors-grey))',
