@@ -21,6 +21,7 @@ const Text = styled('span', {
       regular: tw`font-regular`,
       semibold: tw`font-semibold`,
       bold: tw`font-bold`,
+      black: tw`font-black`,
     },
     variant: {
       default: tw`text-current`,

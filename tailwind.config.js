@@ -170,6 +170,7 @@ module.exports = {
       regular: 400,
       semibold: 600,
       bold: 700,
+      black: 900,
     },
     borderRadius: {
       none: '0',
@@ -202,7 +203,7 @@ module.exports = {
 
           theme: {
             'link-header-hover': 'var(--colors-link-header-hover)',
-            logo: 'var(--colors-link-header-hover)',
+            logo: 'var(--colors-logo)',
           },
         }),
       },
