@@ -16,7 +16,7 @@ type Props = {
 };
 
 const StyledContentWrapper = styled('div', {
-  ...tw`bg-theme-colors-foreground py-64-px`,
+  ...tw`bg-theme-colors-foreground`,
   transition: 'background var(--animation-mode-duration) var(--animation-mode-function)',
 });
 
@@ -46,44 +46,54 @@ const StyledContentItemAnchor = styled('a', {
   },
 });
 
-const Home = ({ contents }: Props) => (
-  <Layout>
-    <div tw='flex flex-col gap-80-px md:gap-128-px pt-56-px md:pt-128-px'>
-      <Container as='section'>
-        <Hero />
-      </Container>
+const Home = ({ contents }: Props) => {
+  const hasContents = contents.length !== 0;
 
-      <section>
-        <Container>
-          <H2 tw='mb-24-px'>My Stuff</H2>
+  return (
+    <Layout>
+      <div tw='flex flex-col gap-80-px md:gap-128-px pt-56-px md:pt-128-px'>
+        <Container as='section'>
+          <Hero />
         </Container>
-        <StyledContentWrapper>
-          <Container tw='flex flex-col gap-48-px'>
-            {contents?.map((content) => (
-              <article key={content.extendedSlug}>
-                <Link href={content.extendedSlug} passHref>
-                  <StyledContentItemAnchor>
-                    <StyledContentItemWrapper>
-                      <div tw='max-w-sm'>
-                        <Chip tw='mb-12 capitalize'>{content.type}</Chip>
-                        <H3 tw='mb-8'>{content.title}</H3>
-                        {content.excerpt && (
-                          <Text as='p' size='body-3'>
-                            {content.excerpt}
-                          </Text>
-                        )}
-                      </div>
-                    </StyledContentItemWrapper>
-                  </StyledContentItemAnchor>
-                </Link>
-              </article>
-            ))}
+
+        <section>
+          <Container>
+            <H2 tw='mb-24-px'>My Stuff</H2>
           </Container>
-        </StyledContentWrapper>
-      </section>
-    </div>
-  </Layout>
-);
+          <StyledContentWrapper css={hasContents ? tw`py-64-px` : tw`py-128-px text-center`}>
+            {hasContents ? (
+              <Container tw='flex flex-col gap-48-px'>
+                {contents.map((content) => (
+                  <article key={content.extendedSlug}>
+                    <Link href={content.extendedSlug} passHref>
+                      <StyledContentItemAnchor>
+                        <StyledContentItemWrapper>
+                          <div tw='max-w-sm'>
+                            <Chip tw='mb-12 capitalize'>{content.type}</Chip>
+                            <H3 tw='mb-8'>{content.title}</H3>
+                            {content.excerpt && (
+                              <Text as='p' size='body-3'>
+                                {content.excerpt}
+                              </Text>
+                            )}
+                          </div>
+                        </StyledContentItemWrapper>
+                      </StyledContentItemAnchor>
+                    </Link>
+                  </article>
+                ))}
+              </Container>
+            ) : (
+              <Text as='p' size='body-4' weight='bold' variant='secondary'>
+                Nothing to see here, new content will arrive soon.
+              </Text>
+            )}
+          </StyledContentWrapper>
+        </section>
+      </div>
+    </Layout>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   const [posts, projects, snippets] = await Promise.all([

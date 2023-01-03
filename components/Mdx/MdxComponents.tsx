@@ -1,5 +1,3 @@
-import dynamic from 'next/dynamic';
-
 import List from '../List';
 import Text, { Strong } from '../Text';
 
@@ -7,8 +5,8 @@ import AnchorMdx from './AnchorMdx';
 import HeadingMdx from './HeadingMdx';
 import ImageMdx from './ImageMdx';
 
-const Test = dynamic(() => import('./widgets/Test'));
-const TestLiveCodeBlock = dynamic(() => import('./widgets/TestLiveCodeBlock'));
+// Widget import example
+// const WidgetComponent = dynamic(() => import('./widgets/Widget'));
 
 export const MdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => <HeadingMdx variant='h2' {...props} />,
@@ -22,6 +20,5 @@ export const MdxComponents = {
   Image: ImageMdx,
 
   // Widget Components
-  Test,
-  TestLiveCodeBlock,
+  // WidgetComponent,
 };

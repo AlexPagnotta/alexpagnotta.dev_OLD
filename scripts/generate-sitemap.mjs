@@ -20,7 +20,8 @@ const generateSitemap = async () => {
     // Exclude
     '!pages/_*.tsx',
     '!pages/api',
-    '!pages/404.tsx',
+    '!pages/404',
+    '!pages/rss.tsx',
   ]);
 
   // Generate sitemap file based on the retrieved paths

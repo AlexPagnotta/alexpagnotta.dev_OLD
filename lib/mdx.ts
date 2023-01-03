@@ -20,7 +20,9 @@ export const contentTypePath = {
 } as const;
 
 export const getAllContentPaths = async (type: ContentType) => {
-  return fs.readdirSync(path.join(contentFolder, contentTypePath[type]));
+  return fs
+    .readdirSync(path.join(contentFolder, contentTypePath[type]))
+    .filter((file) => path.extname(file).toLowerCase() === '.mdx');
 };
 
 export const getAllContentSlugs = async (type: ContentType) => {
