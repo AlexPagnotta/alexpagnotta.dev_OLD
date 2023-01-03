@@ -159,7 +159,7 @@ module.exports = {
         },
       ],
       'body-1': [
-        '14px', // Font size is set in px to avoid shrink when on mobile, anything less than 14px would be too small
+        'max(14px, 1.4rem)', // 1.4 rem would be smaller then 14px on mobile, so we set a minimum to avoid having a text that is too small
         {
           lineHeight: '1.8',
           letterSpacing: '0',
