@@ -1,3 +1,5 @@
+import dynamic from 'next/dynamic';
+
 import List from '../List';
 import Text, { Strong } from '../Text';
 
@@ -5,8 +7,8 @@ import AnchorMdx from './AnchorMdx';
 import HeadingMdx from './HeadingMdx';
 import ImageMdx from './ImageMdx';
 
-// Widget import example
-// const WidgetComponent = dynamic(() => import('./widgets/Widget'));
+// Infinte Scroll Snippet
+const InfiniteScrollWidget = dynamic(() => import('./widgets/InfiniteScrollWidget'));
 
 export const MdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => <HeadingMdx variant='h2' {...props} />,
@@ -20,5 +22,5 @@ export const MdxComponents = {
   Image: ImageMdx,
 
   // Widget Components
-  // WidgetComponent,
+  InfiniteScrollWidget,
 };
