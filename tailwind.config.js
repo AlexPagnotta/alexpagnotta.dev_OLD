@@ -68,7 +68,6 @@ module.exports = {
             'bg-checked': 'var(--colors-switch-bg-checked)',
             bg: 'var(--colors-switch-bg)',
           },
-
           'code-block': {
             bg: 'var(--colors-code-block-bg)',
             selection: {
@@ -76,6 +75,7 @@ module.exports = {
               bg: 'var(--colors-code-block-highlight)',
             },
           },
+          'snippet-preview-wrapper-bg': 'var(--colors-snippet-preview-wrapper-bg)',
         },
       },
     },

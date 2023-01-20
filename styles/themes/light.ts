@@ -51,6 +51,8 @@ const themeLight = {
     '--colors-code-block-syntax-string': 'hsl(var(--colors-pink-dark))',
 
     ...shiki,
+
+    '--colors-snippet-preview-wrapper-bg': 'hsl(var(--colors-white))',
   },
 };
 

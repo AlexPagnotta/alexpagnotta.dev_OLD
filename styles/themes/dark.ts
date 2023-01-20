@@ -51,6 +51,8 @@ const themeDark = {
     '--colors-code-block-syntax-string': 'hsl(var(--colors-yellow-dark))',
 
     ...shiki,
+
+    '--colors-snippet-preview-wrapper-bg': 'hsl(var(--colors-black))',
   },
 };
 
