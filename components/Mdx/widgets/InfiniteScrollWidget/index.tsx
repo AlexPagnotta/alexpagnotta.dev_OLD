@@ -1,10 +1,11 @@
-import { motion, useIsomorphicLayoutEffect } from 'framer-motion';
+import { motion, useIsomorphicLayoutEffect, useMotionValue } from 'framer-motion';
 import React from 'react';
 
 import SnippetPreviewContainer from '/components/SnippetPreviewContainer';
+import useResize from '/hooks/useResizeObserver';
 import { Writeable } from '/types/utils';
 
-type Bounds = Writeable<Pick<DOMRect, 'top' | 'left' | 'bottom' | 'right'>>;
+type Bounds = Writeable<Omit<DOMRect, 'toJSON' | 'x' | 'y'>>;
 
 type Item = {
   id: string;
@@ -37,10 +38,14 @@ const NewItemsOffsets = [
 
 const InfiniteScrollWidget = () => {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
+  const draggableWrapperRef = React.useRef<HTMLDivElement>(null);
   const itemsRef = React.useRef<Item[]>([]);
+  const wrapperBoundsRef = React.useRef<Bounds>();
 
   const [items, setItems] = React.useState<Item[]>([]);
-  const [wrapperBounds, setWrapperBounds] = React.useState<Bounds>();
+
+  const dragYValue = useMotionValue(0);
+  const dragXValue = useMotionValue(0);
 
   const generateRandomItem = (rowIndex: number, colIndex: number, transformation: { x: number; y: number }): Item => {
     return {
@@ -57,7 +62,23 @@ const InfiniteScrollWidget = () => {
   const isPointInsideBounds = (point: { x: number; y: number }, bounds: Bounds) =>
     point.x >= bounds.left && point.x <= bounds.right && point.y >= bounds.top && point.y <= bounds.bottom;
 
+  const getWrapperBounds = () => {
+    if (!wrapperRef.current) return;
+
+    // Add bounds to different object to make it mutable, otherwise it would be readonly
+    const { top, left, bottom, right, height, width } = wrapperRef.current.getBoundingClientRect();
+    return {
+      top: top,
+      left: left,
+      bottom: bottom,
+      right: right,
+      height: height,
+      width: width,
+    };
+  };
+
   const onUpdate = (dragTransformation: { x: number; y: number }) => {
+    const wrapperBounds = wrapperBoundsRef.current;
     if (!wrapperBounds) return;
 
     const currentItems = [...itemsRef.current];
@@ -71,6 +92,8 @@ const InfiniteScrollWidget = () => {
       left: wrapperBounds.left - ItemCellSize,
       right: wrapperBounds.right + ItemCellSize,
       bottom: wrapperBounds.bottom + ItemCellSize,
+      width: wrapperBounds.width + ItemCellSize,
+      height: wrapperBounds.height + ItemCellSize,
     };
 
     currentItems.forEach((currentItem) => {
@@ -110,6 +133,7 @@ const InfiniteScrollWidget = () => {
       }
       // Check if the item is not inside the safe area
       else if (!isPointInsideBounds(itemPosition, safeAreaBounds)) {
+        // DEBUG
         // currentItem.elementRef.current?.style.setProperty('border', '8px solid red');
         itemsToRemove.push(currentItem);
       }
@@ -139,17 +163,12 @@ const InfiniteScrollWidget = () => {
     });
   };
 
-  useIsomorphicLayoutEffect(() => {
-    if (!wrapperRef.current) return;
+  const setupGrid = React.useCallback(() => {
+    // Calculate wrapper bounds and set them in a ref to avoid recalculation on every drag movement
+    const bounds = getWrapperBounds();
+    wrapperBoundsRef.current = bounds;
 
-    // Calculate wrapper bounds and set them in state to avoid recalculation on every drag movement
-    const bounds = wrapperRef.current.getBoundingClientRect();
-    setWrapperBounds({
-      top: bounds.top,
-      left: bounds.left,
-      bottom: bounds.bottom,
-      right: bounds.right,
-    });
+    if (!bounds) return;
 
     // Calculate the number of rows and cols needed to fill the "screen"
     // Add 2 additional rows and cols to have a margin of elements while dragging
@@ -174,15 +193,39 @@ const InfiniteScrollWidget = () => {
       }
     }
 
+    // Stop and reset drag animation
+    dragXValue.stop();
+    dragYValue.stop();
+    dragXValue.set(0);
+    dragYValue.set(0);
+
     setItems(itemsArray);
 
     itemsRef.current = itemsArray;
+  }, [dragXValue, dragYValue]);
+
+  // Recalculate wrapper bounds on wrapper resize
+  useResize(wrapperRef, () => {
+    setupGrid();
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    setupGrid();
   }, []);
 
   return (
     <SnippetPreviewContainer>
       <div tw='w-full h-full' ref={wrapperRef}>
-        <motion.div drag tw='relative' onUpdate={onUpdate}>
+        <motion.div
+          ref={draggableWrapperRef}
+          drag
+          style={{
+            x: dragXValue,
+            y: dragYValue,
+          }}
+          tw='relative'
+          onUpdate={onUpdate}
+        >
           {items.map((item) => (
             <div
               key={item.id}
