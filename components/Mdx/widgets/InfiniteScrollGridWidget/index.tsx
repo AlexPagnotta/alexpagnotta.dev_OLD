@@ -36,7 +36,7 @@ const NewItemsOffsets = [
   { row: +1, col: -1 },
 ];
 
-const InfiniteScrollWidget = () => {
+const InfiniteScrollGridWidget = () => {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const draggableWrapperRef = React.useRef<HTMLDivElement>(null);
   const itemsRef = React.useRef<Item[]>([]);
@@ -244,4 +244,4 @@ const InfiniteScrollWidget = () => {
   );
 };
 
-export default InfiniteScrollWidget;
+export default InfiniteScrollGridWidget;

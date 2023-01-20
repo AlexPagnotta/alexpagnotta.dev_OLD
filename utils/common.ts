@@ -16,3 +16,5 @@ export const debounce = (fn: (...args: never[]) => void, ms = 300) => {
 
   return debouncedFunction;
 };
+
+export const getRandomItemFromArray = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)] as T;

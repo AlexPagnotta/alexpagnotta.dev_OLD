@@ -8,7 +8,7 @@ import HeadingMdx from './HeadingMdx';
 import ImageMdx from './ImageMdx';
 
 // Infinte Scroll Snippet
-const InfiniteScrollWidget = dynamic(() => import('./widgets/InfiniteScrollWidget'));
+const InfiniteScrollGridWidget = dynamic(() => import('./widgets/InfiniteScrollGridWidget'));
 
 export const MdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => <HeadingMdx variant='h2' {...props} />,
@@ -22,5 +22,5 @@ export const MdxComponents = {
   Image: ImageMdx,
 
   // Widget Components
-  InfiniteScrollWidget,
+  InfiniteScrollGridWidget,
 };
