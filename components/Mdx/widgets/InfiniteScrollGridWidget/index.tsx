@@ -1,3 +1,4 @@
+import { styled } from '@stitches/react';
 import { motion, useIsomorphicLayoutEffect, useMotionValue } from 'framer-motion';
 import React from 'react';
 
@@ -5,14 +6,14 @@ import SnippetPreviewContainer from '/components/SnippetPreviewContainer';
 import useResize from '/hooks/useResizeObserver';
 import { Writeable } from '/types/utils';
 
+import tw from 'twin.macro';
+
 type Bounds = Writeable<Omit<DOMRect, 'toJSON' | 'x' | 'y'>>;
 
 type Item = {
   id: string;
   rowIndex: number;
   colIndex: number;
-  imageUrl: string;
-  orientation: 'portrait' | 'lanscape';
   transformation: {
     x: number;
     y: number;
@@ -21,7 +22,7 @@ type Item = {
 };
 
 // Dimension of the square space rederved for each item
-const ItemCellSize = 200;
+const ItemCellSize = 350;
 
 // An array containing a row and col offset for each item
 // this will be used to calculate the generated item position in the grid
@@ -36,9 +37,31 @@ const NewItemsOffsets = [
   { row: +1, col: -1 },
 ];
 
+const StyledItem = styled('div', {
+  ...tw`relative rounded-md`,
+
+  '.theme-dark &': tw`bg-white`,
+  '.theme-light &': tw`bg-black`,
+
+  variants: {
+    orientation: {
+      landscape: {
+        ...tw`w-[70%]`,
+        aspectRatio: '16 / 9',
+      },
+      portrait: {
+        ...tw`h-[70%]`,
+        aspectRatio: '3 / 4',
+      },
+    },
+  },
+  defaultVariants: {
+    orientation: 'landscape',
+  },
+});
+
 const InfiniteScrollGridWidget = () => {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
-  const draggableWrapperRef = React.useRef<HTMLDivElement>(null);
   const itemsRef = React.useRef<Item[]>([]);
   const wrapperBoundsRef = React.useRef<Bounds>();
 
@@ -47,22 +70,24 @@ const InfiniteScrollGridWidget = () => {
   const dragYValue = useMotionValue(0);
   const dragXValue = useMotionValue(0);
 
-  const generateRandomItem = (rowIndex: number, colIndex: number, transformation: { x: number; y: number }): Item => {
-    return {
+  const generateRandomItem = React.useCallback(
+    (rowIndex: number, colIndex: number, transformation: { x: number; y: number }): Item => ({
       id: `${rowIndex}_${colIndex}`,
       rowIndex,
       colIndex,
-      imageUrl: '', // TODO Get random item from initial array
-      orientation: 'portrait', // TODO Get random item from initial array
       transformation,
       elementRef: React.createRef(),
-    };
-  };
+    }),
+    []
+  );
 
-  const isPointInsideBounds = (point: { x: number; y: number }, bounds: Bounds) =>
-    point.x >= bounds.left && point.x <= bounds.right && point.y >= bounds.top && point.y <= bounds.bottom;
+  const isPointInsideBounds = React.useCallback(
+    (point: { x: number; y: number }, bounds: Bounds) =>
+      point.x >= bounds.left && point.x <= bounds.right && point.y >= bounds.top && point.y <= bounds.bottom,
+    []
+  );
 
-  const getWrapperBounds = () => {
+  const getWrapperBounds = React.useCallback(() => {
     if (!wrapperRef.current) return;
 
     // Add bounds to different object to make it mutable, otherwise it would be readonly
@@ -75,7 +100,7 @@ const InfiniteScrollGridWidget = () => {
       height: height,
       width: width,
     };
-  };
+  }, []);
 
   const onUpdate = (dragTransformation: { x: number; y: number }) => {
     const wrapperBounds = wrapperBoundsRef.current;
@@ -112,9 +137,6 @@ const InfiniteScrollGridWidget = () => {
 
       // Check if the item is inside the wrapper
       if (isPointInsideBounds(itemPosition, wrapperBounds)) {
-        // DEBUG
-        // currentItem.elementRef.current?.style.setProperty('border', '8px solid green');
-
         // For each visible point generate 8 new adjacent items
         NewItemsOffsets.forEach(({ row, col }) => {
           const generatedItem = generateRandomItem(
@@ -133,8 +155,6 @@ const InfiniteScrollGridWidget = () => {
       }
       // Check if the item is not inside the safe area
       else if (!isPointInsideBounds(itemPosition, safeAreaBounds)) {
-        // DEBUG
-        // currentItem.elementRef.current?.style.setProperty('border', '8px solid red');
         itemsToRemove.push(currentItem);
       }
 
@@ -202,7 +222,7 @@ const InfiniteScrollGridWidget = () => {
     setItems(itemsArray);
 
     itemsRef.current = itemsArray;
-  }, [dragXValue, dragYValue]);
+  }, [dragXValue, dragYValue, generateRandomItem, getWrapperBounds]);
 
   // Recalculate wrapper bounds on wrapper resize
   useResize(wrapperRef, () => {
@@ -211,14 +231,17 @@ const InfiniteScrollGridWidget = () => {
 
   useIsomorphicLayoutEffect(() => {
     setupGrid();
-  }, []);
+  }, [setupGrid]);
 
   return (
-    <SnippetPreviewContainer>
+    <SnippetPreviewContainer tw='overflow-hidden'>
       <div tw='w-full h-full' ref={wrapperRef}>
         <motion.div
-          ref={draggableWrapperRef}
           drag
+          dragTransition={{
+            power: 0.05,
+            timeConstant: 150,
+          }}
           style={{
             x: dragXValue,
             y: dragYValue,
@@ -226,18 +249,28 @@ const InfiniteScrollGridWidget = () => {
           tw='relative'
           onUpdate={onUpdate}
         >
-          {items.map((item) => (
-            <div
-              key={item.id}
-              tw='absolute border-2 border-pink'
-              ref={item.elementRef}
-              style={{
-                transform: `translate(${item.transformation.x}px, ${item.transformation.y}px)`,
-                width: `${ItemCellSize}px`,
-                height: `${ItemCellSize}px`,
-              }}
-            ></div>
-          ))}
+          {items.map(({ id, colIndex, rowIndex, elementRef, transformation }) => {
+            // Alternate orientation between rows and cols
+            const orientation =
+              (rowIndex % 2 === 0 && colIndex % 2 === 0) || (rowIndex % 2 !== 0 && colIndex % 2 !== 0)
+                ? 'landscape'
+                : 'portrait';
+
+            return (
+              <div
+                key={id}
+                tw='absolute flex justify-center items-center'
+                ref={elementRef}
+                style={{
+                  transform: `translate(${transformation.x}px, ${transformation.y}px)`,
+                  width: `${ItemCellSize}px`,
+                  height: `${ItemCellSize}px`,
+                }}
+              >
+                <StyledItem orientation={orientation} />
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     </SnippetPreviewContainer>

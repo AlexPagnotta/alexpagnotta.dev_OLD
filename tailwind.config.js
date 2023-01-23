@@ -15,6 +15,7 @@ module.exports = {
       grey: {
         lightest: withOpacity('var(--colors-grey-lightest)'),
         light: withOpacity('var(--colors-grey-light)'),
+        DEFAULT: withOpacity('var(--colors-grey)'),
         dark: withOpacity('var(--colors-grey-dark)'),
         darkest: withOpacity('var(--colors-grey-darkest)'),
       },
