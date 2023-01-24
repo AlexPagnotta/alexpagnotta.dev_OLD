@@ -58,7 +58,7 @@ const StyledItem = styled('div', {
   },
 });
 
-const InfiniteScrollGridWidget = () => {
+const InfiniteGridWidget = () => {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const itemsRef = React.useRef<Item[]>([]);
   const wrapperBoundsRef = React.useRef<Bounds>();
@@ -302,4 +302,4 @@ const InfiniteScrollGridWidget = () => {
   );
 };
 
-export default InfiniteScrollGridWidget;
+export default InfiniteGridWidget;
