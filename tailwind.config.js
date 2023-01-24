@@ -195,6 +195,9 @@ module.exports = {
       lg: '960px',
     },
     extend: {
+      cursor: {
+        grab: 'grab',
+      },
       backgroundImage: {
         ...flatten({
           'gradient-yellow': 'var(--gradient-yellow)',

@@ -1,12 +1,13 @@
 import { styled } from '@stitches/react';
 import { motion, useIsomorphicLayoutEffect, useMotionValue } from 'framer-motion';
 import React from 'react';
+import tw from 'twin.macro';
 
 import SnippetPreviewContainer from '/components/SnippetPreviewContainer';
 import useResize from '/hooks/useResizeObserver';
+import useMediaQuery from '/hooks/useMediaQuery';
 import { Writeable } from '/types/utils';
-
-import tw from 'twin.macro';
+import { breakpoints } from '/utils/breakpoints';
 
 type Bounds = Writeable<Omit<DOMRect, 'toJSON' | 'x' | 'y'>>;
 
@@ -20,9 +21,6 @@ type Item = {
   };
   elementRef: React.RefObject<HTMLDivElement>;
 };
-
-// Dimension of the square space rederved for each item
-const ItemCellSize = 350;
 
 // An array containing a row and col offset for each item
 // this will be used to calculate the generated item position in the grid
@@ -65,10 +63,14 @@ const InfiniteScrollGridWidget = () => {
   const itemsRef = React.useRef<Item[]>([]);
   const wrapperBoundsRef = React.useRef<Bounds>();
 
+  // Dimension of the square space reserved for each item
+  const [itemCellSize, setItemCellSize] = React.useState<number>();
   const [items, setItems] = React.useState<Item[]>([]);
 
   const dragYValue = useMotionValue(0);
   const dragXValue = useMotionValue(0);
+
+  const matches = useMediaQuery(breakpoints['md']);
 
   const generateRandomItem = React.useCallback(
     (rowIndex: number, colIndex: number, transformation: { x: number; y: number }): Item => ({
@@ -103,6 +105,8 @@ const InfiniteScrollGridWidget = () => {
   }, []);
 
   const onUpdate = (dragTransformation: { x: number; y: number }) => {
+    if (!itemCellSize) return;
+
     const wrapperBounds = wrapperBoundsRef.current;
     if (!wrapperBounds) return;
 
@@ -113,12 +117,12 @@ const InfiniteScrollGridWidget = () => {
 
     // Define bounds of the safe area, outside this area items will be removed
     const safeAreaBounds = {
-      top: wrapperBounds.top - ItemCellSize,
-      left: wrapperBounds.left - ItemCellSize,
-      right: wrapperBounds.right + ItemCellSize,
-      bottom: wrapperBounds.bottom + ItemCellSize,
-      width: wrapperBounds.width + ItemCellSize,
-      height: wrapperBounds.height + ItemCellSize,
+      top: wrapperBounds.top - itemCellSize,
+      left: wrapperBounds.left - itemCellSize,
+      right: wrapperBounds.right + itemCellSize,
+      bottom: wrapperBounds.bottom + itemCellSize,
+      width: wrapperBounds.width + itemCellSize,
+      height: wrapperBounds.height + itemCellSize,
     };
 
     currentItems.forEach((currentItem) => {
@@ -131,8 +135,8 @@ const InfiniteScrollGridWidget = () => {
 
       // Calculate the absolute position of the item with his origin at the center
       const itemPosition = {
-        x: itemBounds.left + ItemCellSize / 2,
-        y: itemBounds.top + ItemCellSize / 2,
+        x: itemBounds.left + itemCellSize / 2,
+        y: itemBounds.top + itemCellSize / 2,
       };
 
       // Check if the item is inside the wrapper
@@ -145,8 +149,8 @@ const InfiniteScrollGridWidget = () => {
             currentItem.colIndex + col,
             // Calculate the new item transformation
             {
-              x: currentItem.transformation.x + ItemCellSize * row,
-              y: currentItem.transformation.y + ItemCellSize * col,
+              x: currentItem.transformation.x + itemCellSize * row,
+              y: currentItem.transformation.y + itemCellSize * col,
             }
           );
 
@@ -184,6 +188,9 @@ const InfiniteScrollGridWidget = () => {
   };
 
   const setupGrid = React.useCallback(() => {
+    // Wait for size to be defined before setting up the grid
+    if (!itemCellSize) return;
+
     // Calculate wrapper bounds and set them in a ref to avoid recalculation on every drag movement
     const bounds = getWrapperBounds();
     wrapperBoundsRef.current = bounds;
@@ -192,12 +199,12 @@ const InfiniteScrollGridWidget = () => {
 
     // Calculate the number of rows and cols needed to fill the "screen"
     // Add 2 additional rows and cols to have a margin of elements while dragging
-    const rows = Math.ceil(bounds.width / ItemCellSize) + 2;
-    const cols = Math.ceil(bounds.height / ItemCellSize) + 2;
+    const rows = Math.ceil(bounds.width / itemCellSize) + 2;
+    const cols = Math.ceil(bounds.height / itemCellSize) + 2;
 
     // Calculate the offset needed to move the elements grid to the center relative to the wrapper
-    const centerOffsetX = (rows * ItemCellSize - bounds.width) / 2;
-    const centerOffsetY = (cols * ItemCellSize - bounds.height) / 2;
+    const centerOffsetX = (rows * itemCellSize - bounds.width) / 2;
+    const centerOffsetY = (cols * itemCellSize - bounds.height) / 2;
 
     // Generate grid of items
     const itemsArray: Item[] = [];
@@ -205,8 +212,8 @@ const InfiniteScrollGridWidget = () => {
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
         const transformation = {
-          x: row * ItemCellSize - centerOffsetX,
-          y: col * ItemCellSize - centerOffsetY,
+          x: row * itemCellSize - centerOffsetX,
+          y: col * itemCellSize - centerOffsetY,
         };
 
         itemsArray.push(generateRandomItem(row, col, transformation));
@@ -222,56 +229,74 @@ const InfiniteScrollGridWidget = () => {
     setItems(itemsArray);
 
     itemsRef.current = itemsArray;
-  }, [dragXValue, dragYValue, generateRandomItem, getWrapperBounds]);
+  }, [dragXValue, dragYValue, generateRandomItem, getWrapperBounds, itemCellSize]);
+
+  // Update cell size on media query changes
+  React.useEffect(() => {
+    if (matches === undefined) return;
+    setItemCellSize(matches ? 350 : 200);
+  }, [matches]);
 
   // Recalculate wrapper bounds on wrapper resize
-  useResize(wrapperRef, () => {
-    setupGrid();
-  });
+  useResize(
+    wrapperRef,
+    () => {
+      setupGrid();
+    },
+    [setupGrid],
+    200
+  );
 
   useIsomorphicLayoutEffect(() => {
     setupGrid();
   }, [setupGrid]);
 
   return (
-    <SnippetPreviewContainer tw='overflow-hidden'>
+    <SnippetPreviewContainer tw='isolate overflow-hidden'>
       <div tw='w-full h-full' ref={wrapperRef}>
-        <motion.div
-          drag
-          dragTransition={{
-            power: 0.05,
-            timeConstant: 150,
-          }}
-          style={{
-            x: dragXValue,
-            y: dragYValue,
-          }}
-          tw='relative'
-          onUpdate={onUpdate}
-        >
-          {items.map(({ id, colIndex, rowIndex, elementRef, transformation }) => {
-            // Alternate orientation between rows and cols
-            const orientation =
-              (rowIndex % 2 === 0 && colIndex % 2 === 0) || (rowIndex % 2 !== 0 && colIndex % 2 !== 0)
-                ? 'landscape'
-                : 'portrait';
+        {items.length > 0 ? (
+          <motion.div
+            // Enter Animation
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            // Drag Animation
+            drag
+            dragTransition={{
+              power: 0.05,
+              timeConstant: 150,
+            }}
+            style={{
+              x: dragXValue,
+              y: dragYValue,
+            }}
+            onUpdate={onUpdate}
+            tw='relative cursor-grab'
+          >
+            {items.map(({ id, colIndex, rowIndex, elementRef, transformation }) => {
+              // Alternate orientation between rows and cols
+              const orientation =
+                (rowIndex % 2 === 0 && colIndex % 2 === 0) || (rowIndex % 2 !== 0 && colIndex % 2 !== 0)
+                  ? 'landscape'
+                  : 'portrait';
 
-            return (
-              <div
-                key={id}
-                tw='absolute flex justify-center items-center'
-                ref={elementRef}
-                style={{
-                  transform: `translate(${transformation.x}px, ${transformation.y}px)`,
-                  width: `${ItemCellSize}px`,
-                  height: `${ItemCellSize}px`,
-                }}
-              >
-                <StyledItem orientation={orientation} />
-              </div>
-            );
-          })}
-        </motion.div>
+              return (
+                <div
+                  key={id}
+                  tw='absolute flex justify-center items-center'
+                  ref={elementRef}
+                  style={{
+                    transform: `translate(${transformation.x}px, ${transformation.y}px)`,
+                    width: `${itemCellSize}px`,
+                    height: `${itemCellSize}px`,
+                  }}
+                >
+                  <StyledItem orientation={orientation} />
+                </div>
+              );
+            })}
+          </motion.div>
+        ) : undefined}
       </div>
     </SnippetPreviewContainer>
   );

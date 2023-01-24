@@ -1,17 +1,12 @@
-// stitches.config.ts
 import { createStitches } from '@stitches/react';
+
 export type { CSS } from '@stitches/react/types/css-util';
-import { theme as twTheme } from 'twin.macro';
+import { breakpoints } from './utils/breakpoints';
 
 export const stitches = createStitches({
   theme: {},
   media: {
-    ...Object.entries(twTheme`screens`).reduce((accumulator, [key, value]) => {
-      if (key === 'support-hover') return accumulator;
-
-      return { ...accumulator, [key]: `(min-width: ${value})` };
-    }, {}),
-
+    ...breakpoints,
     'support-hover': '(hover: hover) and (pointer: fine)',
   },
   utils: {

@@ -6,7 +6,7 @@ import React from 'react';
   This is useful to access the latest updated value in a useEffect without triggering the effect itself.
   See: https://epicreact.dev/the-latest-ref-pattern-in-react/
 */
-export const useLatest = <T>(value: T) => {
+const useLatest = <T>(value: T) => {
   const refValue = React.useRef(value);
 
   useIsomorphicLayoutEffect(() => {
@@ -15,3 +15,5 @@ export const useLatest = <T>(value: T) => {
 
   return refValue;
 };
+
+export default useLatest;
